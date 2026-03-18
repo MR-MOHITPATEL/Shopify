@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Purchase Flow Preview - ZenJeevani</title>
+    <style>
+        :root {
+            --color-primary: #1b4332;
+            --color-secondary: #f4f1ea;
+            --color-accent: #7a8d79;
+            --color-bg: #fcfbf7;
+            --color-white: #ffffff;
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --transition-fast: 0.2s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background: var(--color-bg);
+            color: #1a2b23;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Carousel Styles */
+        .product-hero { padding: 80px 0; }
+        .product-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
+        
+        .product-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            background: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+        }
+
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 16px;
+            box-sizing: border-box;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .carousel-arrow {
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eee;
+            cursor: pointer;
+            pointer-events: auto;
+            box-shadow: var(--shadow-md);
+        }
+
+        .carousel-thumbnails {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            overflow-x: auto;
+        }
+
+        .thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            border: 2px solid transparent;
+            cursor: pointer;
+            background: white;
+            flex-shrink: 0;
+        }
+
+        .thumb.active { border-color: var(--color-primary); }
+
+        /* Qty & Buttons */
+        .qty-label { font-size: 13px; font-weight: 700; color: #666; margin-bottom: 12px; display: block; }
+        .qty-selector { display: flex; align-items: center; border: 1px solid #ddd; border-radius: 12px; width: fit-content; margin-bottom: 32px; overflow: hidden; }
+        .qty-btn { width: 44px; height: 44px; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--color-primary); }
+        .qty-input { width: 44px; height: 44px; border: none; border-left: 1px solid #eee; border-right: 1px solid #eee; text-align: center; font-weight: 700; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        .btn { padding: 18px; border-radius: 12px; font-weight: 700; cursor: pointer; border: none; font-size: 16px; width: 100%; text-transform: uppercase; }
+        .btn-primary { background: #ffc107; color: #000; }
+        .btn-outline { background: #fff; border: 1px solid #ddd; color: var(--color-primary); }
+
+        /* Drawer */
+        .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; display: none; }
+        .drawer { position: fixed; top: 0; right: -450px; width: 450px; height: 100%; background: #fff; z-index: 1001; transition: 0.3s; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; }
+        .drawer.open { right: 0; }
+        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .drawer-close { font-size: 32px; cursor: pointer; }
+        .drawer-items { flex: 1; overflow-y: auto; }
+        .drawer-item { display: flex; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid #eee; margin-bottom: 24px; }
+        .drawer-img { width: 80px; height: 80px; background: #f8f9fa; border-radius: 8px; }
+        
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .drawer { width: 100%; right: -100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="product-hero">
+        <div class="container">
+            <div class="product-grid">
+                <!-- Carousel -->
+                <div>
+                    <div class="product-carousel">
+                        <div class="carousel-track" id="track">
+                            <div class="carousel-slide"><img src="https://picsum.photos/id/1/800/800" alt="1"></div>
+                            <div class="carousel-slide"><img src="https://picsum.photos/id/2/800/800" alt="2"></div>
+                            <div class="carousel-slide"><img src="https://picsum.photos/id/3/800/800" alt="3"></div>
+                        </div>
+                        <div class="carousel-nav">
+                            <span class="carousel-arrow" onclick="moveSlide(-1)">←</span>
+                            <span class="carousel-arrow" onclick="moveSlide(1)">→</span>
+                        </div>
+                    </div>
+                    <div class="carousel-thumbnails">
+                        <div class="thumb active" onclick="moveSlide(0, true)"></div>
+                        <div class="thumb" onclick="moveSlide(1, true)"></div>
+                        <div class="thumb" onclick="moveSlide(2, true)"></div>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="product-info">
+                    <h1 style="font-size: 48px; margin: 0 0 16px;">Pure Ayurvedic Vitality</h1>
+                    <div style="font-size: 32px; font-weight: 700; color: var(--color-primary); margin-bottom: 32px;">₹1,499.00</div>
+                    
+                    <label class="qty-label">SELECT QUANTITY</label>
+                    <div class="qty-selector">
+                        <button class="qty-btn" onclick="updatePreviewQty(-1)">−</button>
+                        <input type="number" class="qty-input" value="1" id="preview-qty">
+                        <button class="qty-btn" onclick="updatePreviewQty(1)">+</button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary">BUY IT NOW</button>
+                        <button class="btn btn-outline" onclick="toggleDrawer(true)">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="drawer-overlay" id="overlay" onclick="toggleDrawer(false)"></div>
+    <div class="drawer" id="drawer">
+        <div class="drawer-header">
+            <h2 style="margin: 0;">Your Cart</h2>
+            <span class="drawer-close" onclick="toggleDrawer(false)">&times;</span>
+        </div>
+        <div class="drawer-items">
+            <div class="drawer-item">
+                <div class="drawer-img"></div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 700; margin-bottom: 4px;">Ayurvedic Vitality</div>
+                    <div style="color: var(--color-secondary); font-size: 14px; margin-bottom: 12px;">₹1,499.00</div>
+                    <div class="qty-selector" style="margin-bottom: 0; transform: scale(0.85); transform-origin: left;">
+                        <button class="qty-btn">−</button>
+                        <input type="number" class="qty-input" value="1">
+                        <button class="qty-btn">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: auto; border-top: 1px solid #eee; padding-top: 24px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 24px; font-weight: 700; font-size: 18px;">
+                <span>Total</span>
+                <span>₹1,499.00</span>
+            </div>
+            <button class="btn" style="background: var(--color-primary); color: white;">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        function moveSlide(idx, absolute = false) {
+            const track = document.getElementById('track');
+            const thumbs = document.querySelectorAll('.thumb');
+            if (absolute) currentSlide = idx;
+            else {
+                currentSlide += idx;
+                if (currentSlide > 2) currentSlide = 0;
+                if (currentSlide < 0) currentSlide = 2;
+            }
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            thumbs.forEach((t, i) => t.classList.toggle('active', i === currentSlide));
+        }
+
+        function toggleDrawer(open) {
+            document.getElementById('drawer').classList.toggle('open', open);
+            document.getElementById('overlay').style.display = open ? 'block' : 'none';
+        }
+
+        function updatePreviewQty(amt) {
+            const input = document.getElementById('preview-qty');
+            input.value = Math.max(1, parseInt(input.value) + amt);
+        }
+
+        // Auto-slide
+        setInterval(() => moveSlide(1), 4000);
+    </script>
+
+</body>
+</html>

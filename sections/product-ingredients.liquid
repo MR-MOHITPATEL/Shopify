@@ -1,0 +1,204 @@
+<style>
+  .product-ingredients {
+    padding: 80px 0;
+    background: #fdfefd;
+  }
+  .ingredients-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .ingredient-image {
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  .ingredient-image img {
+    width: 100%;
+    display: block;
+  }
+  .ingredient-content h2 {
+    font-size: 32px;
+    color: #1b4332;
+    margin-bottom: 24px;
+  }
+  .ingredient-list {
+    list-style: none;
+    padding: 0;
+  }
+  .ingredient-list-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .ingredient-circle {
+    width: 24px;
+    height: 24px;
+    background: #2d6a4f;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .ingredient-list-item h4 {
+    font-size: 18px;
+    color: #1b4332;
+    margin-bottom: 4px;
+  }
+  .ingredient-list-item p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .ingredients-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .ingredient-content {
+      order: -1;
+    }
+  }
+</style>
+
+<section class="product-ingredients">
+  <div class="container">
+    <div class="ingredients-grid">
+      <div class="ingredient-image">
+        <img src="https://images.unsplash.com/photo-1615485242273-0346338f0be8?q=80&w=800" alt="Ayurvedic Herbs">
+      </div>
+      <div class="ingredient-content">
+        <h2>The Science of Herbs</h2>
+        <div class="ingredient-list">
+          {% if product.handle == 'product-1-handle' %}
+            <div class="ingredient-list-item">
+              <div class="ingredient-icon-wrapper">
+                <img src="{{ 'icon-omega3.png' | asset_url }}" alt="Omega-3" class="ingredient-asset-icon">
+              </div>
+              <div>
+                <h4>Omega-3 (Salmon Fish Oil)</h4>
+                <p>High-purity extract for arterial health and inflammation control.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-icon-wrapper">
+                <img src="{{ 'icon-coq10.png' | asset_url }}" alt="CoQ10" class="ingredient-asset-icon">
+              </div>
+              <div>
+                <h4>CoQ10</h4>
+                <p>Essential for cardiac energy production and mitochondrial health.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-icon-wrapper">
+                <img src="{{ 'icon-garlic.png' | asset_url }}" alt="Garlic" class="ingredient-asset-icon">
+              </div>
+              <div>
+                <h4>Aged Garlic Extract</h4>
+                <p>Clinically proven to support healthy blood pressure and cholesterol.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-icon-wrapper">
+                <img src="{{ 'icon-vitamind3.png' | asset_url }}" alt="Vitamin D3" class="ingredient-asset-icon">
+              </div>
+              <div>
+                <h4>Vitamin D3</h4>
+                <p>Critical for vascular function and overall heart resilience.</p>
+              </div>
+            </div>
+
+          {% elsif product.handle == 'product-2-handle' %}
+             <div class="ingredient-list-item">
+              <div class="ingredient-icon-wrapper">
+                <img src="{{ 'icon-magnesium.png' | asset_url }}" alt="Magnesium" class="ingredient-asset-icon">
+              </div>
+              <div>
+                <h4>Magnesium (glycinate/citrate)</h4>
+                <p>Relaxes blood vessels and supports healthy heart rhythm.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-icon-wrapper">
+                <img src="{{ 'icon-potassium.png' | asset_url }}" alt="Potassium" class="ingredient-asset-icon">
+              </div>
+              <div>
+                <h4>Potassium (citrate)</h4>
+                <p>Key mineral for fluid balance and blood pressure regulation.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-icon-wrapper">
+                <img src="{{ 'icon-beetroot.png' | asset_url }}" alt="Beetroot" class="ingredient-asset-icon">
+              </div>
+              <div>
+                <h4>Beetroot nitrate</h4>
+                <p>Enhances nitric oxide levels for improved vascular relaxation.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-icon-wrapper">
+                <img src="{{ 'icon-ashwagandha.png' | asset_url }}" alt="Ashwagandha" class="ingredient-asset-icon">
+              </div>
+              <div>
+                <h4>Ashwagandha (KSM-66)</h4>
+                <p>Reduces stress-related spikes and supports autonomic balance.</p>
+              </div>
+            </div>
+
+          {% else %}
+            <div class="ingredient-list-item">
+              <div class="ingredient-circle"></div>
+              <div>
+                <h4>Arjuna Bark (Terminalia arjuna)</h4>
+                <p>Recognized for centuries as the premier herb for strengthening heart muscles and regulating rhythm.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-circle"></div>
+              <div>
+                <h4>Sarpagandha</h4>
+                <p>A powerful natural alkaloid used to maintain healthy blood pressure and reduce tension.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-circle"></div>
+              <div>
+                <h4>Guggul Extract</h4>
+                <p>Supports lipid metabolism and helps maintain clear, flexible arteries for optimal flow.</p>
+              </div>
+            </div>
+            <div class="ingredient-list-item">
+              <div class="ingredient-circle"></div>
+              <div>
+                <h4>Garlic (Allium sativum)</h4>
+                <p>Promotes nitric oxide production, aiding in the relaxation of blood vessel walls.</p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ingredient-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+  .ingredient-asset-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Ingredients",
+  "settings": []
+}
+{% endschema %}

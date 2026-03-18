@@ -1,0 +1,70 @@
+<section class="doctor-section" style="background-color: #fff; padding: var(--spacing-xxl) 0;">
+  <div class="container">
+    <div class="doctor-grid grid grid-cols-1 grid-cols-2 gap-xl items-center">
+      <div class="doctor-image-wrapper">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url: width: 1000 }}" alt="{{ section.settings.name }}" class="doctor-image" style="box-shadow: 20px 20px 0px #eef6fc; border-radius: 0;">
+        {% else %}
+          <div style="background: #eef6fc; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;">
+            <img src="https://jaadudiet.com/cdn/shop/files/Why_Trust_Us.png?v=1708418044&width=1000" alt="Dr. Bimal Chhajer" class="doctor-image">
+          </div>
+        {% endif %}
+      </div>
+      
+      <div class="doctor-info">
+        <h2 style="font-size: clamp(32px, 5vw, 48px); margin-bottom: 24px;">{{ section.settings.heading }}</h2>
+        <div class="doctor-name" style="font-size: 24px; font-weight: 700; color: #3b4260; margin-bottom: 16px;">{{ section.settings.name }}</div>
+        <div class="doctor-description prose" style="font-size: 18px; line-height: 1.6; color: #666; margin-bottom: 32px;">
+          {{ section.settings.description }}
+        </div>
+        
+        <div class="trust-stats grid grid-cols-2 gap-md">
+          <div class="stat-item" style="border-left: 2px solid #eef6fc; padding-left: 16px;">
+            <div style="font-size: 20px; font-weight: 700; color: #1a2b23;">MBBS & MD</div>
+            <div style="font-size: 14px; color: #999;">Medical Expertise</div>
+          </div>
+          <div class="stat-item" style="border-left: 2px solid #eef6fc; padding-left: 16px;">
+            <div style="font-size: 20px; font-weight: 700; color: #1a2b23;">600,000 +</div>
+            <div style="font-size: 14px; color: #999;">Lives Guided</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Trust Us (Expert)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Trust Us?"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Expert Image"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Expert Name",
+      "default": "Dr. Bimal Chhajer"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Expert Bio",
+      "default": "Dr. Bimal Chhajer, the founder of Jaadu Diet, is a highly respected cardiologist with over three decades of medical experience. His plant-based, fiber-rich regimen is designed to support healthy weight management and promote cardiovascular wellness."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Trust Us (Expert)"
+    }
+  ]
+}
+{% endschema %}

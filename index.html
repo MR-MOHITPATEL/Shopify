@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenJeevani - Structural Copy Preview</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .preview-header {
+            background: #1a2b23;
+            color: white;
+            padding: 8px;
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .page-wrapper { min-height: 200vh; padding-top: 20px; }
+        .is-active { transform: translateY(0) !important; display: flex !important; }
+    </style>
+</head>
+<body>
+    <div class="preview-header">Local Preview Mode - Full Structural Replication</div>
+
+    <!-- 3-ZONE HEADER -->
+    <header class="header">
+        <div class="container header__wrapper">
+            <div class="header__left">
+                <button class="header__icon menu-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+            <div class="header__center">
+                <div class="header__logo">
+                    <span style="font-family: 'Outfit'; font-weight: 700; font-size: 24px;">ZenJeevani</span>
+                </div>
+            </div>
+            <div class="header__right">
+                <div class="header__icon" style="height:24px;width:24px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+                <div class="header__icon" style="height:24px;width:24px;margin:0 15px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div class="header__icon" style="height:24px;width:24px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+        <!-- SIMPLIFIED HERO BANNER -->
+        <section class="hero-banner">
+            <div class="container hero-banner__wrapper">
+                <div class="hero-banner__content">
+                    <p class="hero-banner__subheading">You don't need strict, painful diets or relentless gym routines to lose weight.</p>
+                </div>
+                <div class="hero-banner__image-container">
+                    <img src="https://jaadudiet.com/cdn/shop/files/dr_bimal_jaadu_diet.png?v=1708418044&width=1200" alt="Banner" class="hero-banner__image">
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCT SECTION MOCKUP -->
+        <section class="product-page">
+            <div class="container grid grid-cols-2 gap-xl" style="margin-top: 80px;">
+                <div class="product-gallery">
+                    <img src="https://jaadudiet.com/cdn/shop/files/Product_Image_Daily_Salad_Mix.png?v=1708418044&width=1200" alt="Product" class="product-main-image">
+                </div>
+                <div class="product-meta">
+                    <div style="text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px; color: #999;">Jaadu Diet</div>
+                    <h1 style="font-size: 48px; margin-bottom: 16px;">Daily Salad Mix - Ajwain Jeera</h1>
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                        <span style="color: #d0021b; font-size: 24px; font-weight: 700;">₹699.00</span>
+                        <span style="text-decoration: line-through; color: #999; font-size: 18px;">₹1,398.00</span>
+                        <span style="background: #eef6fc; color: #3b4260; padding: 4px 12px; border-radius: 99px; font-size: 14px; font-weight: 600;">SAVE 50%</span>
+                    </div>
+                    
+                    <div class="accordion">
+                        <details class="accordion__item" open>
+                            <summary class="accordion__header">Ingredients <span>+</span></summary>
+                            <div class="accordion__content" style="padding: 10px 0;"><p>Natural fiber blend with green tea, fenugreek, and apple cider.</p></div>
+                        </details>
+                        <details class="accordion__item">
+                            <summary class="accordion__header">Benefits <span>+</span></summary>
+                            <div class="accordion__content" style="padding: 10px 0;"><p>Sustainable weight loss and metabolic control.</p></div>
+                        </details>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%; height: 56px; margin-top: 32px; border-radius: 8px;">ADD TO CART</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY TRUST US SECTION -->
+        <section class="doctor-section" style="background-color: #fff; padding: 100px 0;">
+            <div class="container grid grid-cols-2 gap-xl items-center">
+                <div class="doctor-image-wrapper">
+                    <img src="https://jaadudiet.com/cdn/shop/files/Why_Trust_Us.png?v=1708418044&width=1000" alt="Expert" class="doctor-image" style="box-shadow: 20px 20px 0px #eef6fc;">
+                </div>
+                <div class="doctor-info">
+                    <h2 style="font-size: 48px; margin-bottom: 24px;">Why Trust Us?</h2>
+                    <div style="font-size: 24px; font-weight: 700; color: #3b4260; margin-bottom: 16px;">Dr. Bimal Chhajer</div>
+                    <p style="font-size: 18px; line-height: 1.6; color: #666; margin-bottom: 32px;">Over three decades of medical experience guided by lifestyle-first approach.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 4-COLUMN FOOTER -->
+    <footer class="footer">
+        <div class="container footer__grid">
+            <div class="footer__column">
+                <div style="font-family: 'Outfit'; font-weight: 700; font-size: 20px; margin-bottom: 24px;">ZenJeevani</div>
+                <div class="footer__contact-info">
+                    <p>Baner, Pune, India</p>
+                    <p>+91 7400359700</p>
+                    <p>wecare@jaadudiet.com</p>
+                </div>
+            </div>
+            <div class="footer__column">
+                <h4 class="footer__column-title">Policies</h4>
+                <ul class="footer__link-list">
+                    <li class="footer__link-item"><a href="#" class="footer__link">Privacy Policy</a></li>
+                    <li class="footer__link-item"><a href="#" class="footer__link">Refunds Policy</a></li>
+                    <li class="footer__link-item"><a href="#" class="footer__link">Shipping Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer__column">
+                <p style="font-size: 14px; opacity: 0.8; font-style: italic;">Owned by Zenjeevani Healthtech Private Limited</p>
+            </div>
+            <div class="footer__column">
+                <h4 class="footer__column-title">Follow Us</h4>
+                <div class="footer__socials">
+                    <div class="footer__social-icon" style="width:24px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z"/></svg></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY BUY BAR SIMULATION -->
+    <div id="StickyBuy" class="sticky-buy" style="transform: translateY(100%); display: none;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="font-weight: 600;">Daily Salad Mix</div>
+            <button class="btn btn-primary" style="padding: 10px 24px;">BUY NOW</button>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const sticky = document.getElementById('StickyBuy');
+            if (window.scrollY > 400) {
+                sticky.style.display = 'flex';
+                sticky.style.transform = 'translateY(0)';
+            } else {
+                sticky.style.display = 'none';
+                sticky.style.transform = 'translateY(100%)';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<section class="hero-banner">
+  <div class="container hero-banner__wrapper">
+    <div class="hero-banner__content">
+      <p class="hero-banner__subheading">
+        {{ section.settings.subheading }}
+      </p>
+    </div>
+
+    <div class="hero-banner__image-container">
+      {%- if section.settings.image != blank -%}
+        <img 
+          src="{{ section.settings.image | image_url: width: 1200 }}" 
+          alt="{{ section.settings.subheading | escape }}" 
+          class="hero-banner__image"
+          loading="eager"
+        >
+      {%- else -%}
+        <div style="background: #ccc; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-lg);">
+          Banner Image Placeholder
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner Simplified",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Text Content",
+      "default": "You don't need strict, painful diets or relentless gym routines to lose weight."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner Simplified"
+    }
+  ]
+}
+{% endschema %}

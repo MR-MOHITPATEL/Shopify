@@ -1,0 +1,54 @@
+<section class="section" style="padding: var(--spacing-md) 0;">
+  <div class="container">
+    <div class="category-scroll">
+      {% for i in (1..8) %}
+        {% capture title_key %}category_title_{{ i }}{% endcapture %}
+        {% capture icon_key %}category_icon_{{ i }}{% endcapture %}
+        {% capture link_key %}category_link_{{ i }}{% endcapture %}
+        
+        {% if section.settings[title_key] != blank %}
+          <a href="{{ section.settings[link_key] }}" class="category-item">
+            <div class="category-icon">
+              {% if section.settings[icon_key] != blank %}
+                <img src="{{ section.settings[icon_key] | image_url: width: 48 }}" alt="{{ section.settings[title_key] }}" style="width: 32px; height: 32px;">
+              {% else %}
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-primary);">
+                  <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+              {% endif %}
+            </div>
+            <span class="category-title">{{ section.settings[title_key] }}</span>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category Scroll",
+  "settings": [
+    { "type": "text", "id": "category_title_1", "label": "Category 1 Title", "default": "Hair Care" },
+    { "type": "image_picker", "id": "category_icon_1", "label": "Category 1 Icon" },
+    { "type": "url", "id": "category_link_1", "label": "Category 1 Link" },
+    { "type": "text", "id": "category_title_2", "label": "Category 2 Title", "default": "Skin Care" },
+    { "type": "image_picker", "id": "category_icon_2", "label": "Category 2 Icon" },
+    { "type": "url", "id": "category_link_2", "label": "Category 2 Link" },
+    { "type": "text", "id": "category_title_3", "label": "Category 3 Title", "default": "Weight Loss" },
+    { "type": "image_picker", "id": "category_icon_3", "label": "Category 3 Icon" },
+    { "type": "url", "id": "category_link_3", "label": "Category 3 Link" },
+    { "type": "text", "id": "category_title_4", "label": "Category 4 Title", "default": "Men's Health" },
+    { "type": "image_picker", "id": "category_icon_4", "label": "Category 4 Icon" },
+    { "type": "url", "id": "category_link_4", "label": "Category 4 Link" },
+    { "type": "text", "id": "category_title_5", "label": "Category 5 Title", "default": "Wellness" },
+    { "type": "image_picker", "id": "category_icon_5", "label": "Category 5 Icon" },
+    { "type": "url", "id": "category_link_5", "label": "Category 5 Link" }
+  ],
+  "presets": [
+    {
+      "name": "Category Scroll"
+    }
+  ]
+}
+{% endschema %}

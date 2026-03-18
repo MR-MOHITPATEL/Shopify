@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Lipid Lite Preview - ZenJeevani</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --brand-yellow: #ffc107;
+        --brand-black: #111111;
+        --text-dark: #2d3436;
+        --text-light: #636e72;
+        --bg-pure: #ffffff;
+        --bg-subtle: #f9f9f9;
+        --accent-green: #2ecc71;
+        --border-soft: #f0f0f0;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--bg-pure);
+        font-family: 'Outfit', sans-serif;
+      }
+
+      .preview-label {
+          background: #111;
+          color: white;
+          padding: 4px 12px;
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          position: fixed;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1000;
+          border-radius: 0 0 8px 8px;
+      }
+
+      .premium-product-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 20px;
+      }
+
+      .product-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+        margin-bottom: 80px;
+      }
+
+      @media (max-width: 900px) {
+        .product-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .gallery-container {
+        background-color: var(--bg-subtle);
+        border-radius: 20px;
+        padding: 40px;
+      }
+
+      .main-product-img {
+        width: 100%;
+        height: auto;
+        mix-blend-mode: multiply;
+      }
+
+      .product-header h1 {
+        font-size: 42px;
+        margin: 0 0 10px 0;
+        font-weight: 700;
+      }
+
+      .price-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 35px;
+      }
+
+      .price-current {
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      .price-old {
+        font-size: 20px;
+        text-decoration: line-through;
+        color: var(--text-light);
+      }
+
+      .pill-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: #fff;
+        border: 1px solid var(--border-soft);
+        border-radius: 15px;
+        margin-bottom: 10px;
+      }
+
+      .pill-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--bg-subtle);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .premium-bonus {
+        background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+        border: 1px solid #c8e6c9;
+        padding: 15px 20px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+      }
+
+      .btn-premium {
+        height: 55px;
+        border-radius: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+      }
+
+      .btn-solid { background: var(--brand-yellow); }
+      .btn-outline { background: transparent; border: 2px solid #000; }
+
+      .tab-nav {
+        display: flex;
+        gap: 40px;
+        border-bottom: 1px solid var(--border-soft);
+        margin-bottom: 30px;
+      }
+
+      .tab-trigger {
+        padding: 15px 0;
+        background: none;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .tab-trigger.is-active {
+        border-bottom: 3px solid #000;
+      }
+
+      .nutri-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .nutri-table th, .nutri-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-soft);
+      }
+    </style>
+</head>
+<body>
+    <div class="preview-label">Heart Lipid Lite Output Preview</div>
+
+    <div class="premium-product-wrapper">
+      <div class="product-layout">
+        <div class="gallery-container">
+          <img src="https://images.unsplash.com/photo-1579722820308-d74e5719d38e?q=80&w=800" class="main-product-img">
+        </div>
+
+        <div class="info-container">
+          <div class="product-header">
+            <h1>Heart Lipid Lite</h1>
+            <p style="color: var(--text-light); margin-bottom: 30px;">For Complete Cardiometabolic Health & Triglyceride Support</p>
+          </div>
+
+          <div class="price-container">
+            <span class="price-current">₹850</span>
+            <span class="price-old">₹999</span>
+            <span class="price-discount" style="color: var(--accent-green);">SAVE 15%</span>
+          </div>
+
+          <div class="combo-box">
+             <p style="font-weight:600; text-transform:uppercase; font-size:14px; color:var(--text-light); margin-bottom:15px;">Ingredients in formulation</p>
+             <div class="pill-item"><div class="pill-icon">🐟</div><div class="pill-text"><b>Omega-3 (Salmon Fish Oil)</b><span>1,000 mg EPA · Softgel</span></div></div>
+             <div class="pill-item"><div class="pill-icon">⚡</div><div class="pill-text"><b>CoQ10</b><span>100 mg · Capsule</span></div></div>
+             <div class="pill-item"><div class="pill-icon">🧄</div><div class="pill-text"><b>Garlic (Aged Extract)</b><span>600 mg · Capsule</span></div></div>
+             <div class="pill-item"><div class="pill-icon">☀️</div><div class="pill-text"><b>Vitamin D3</b><span>1,000 IU · Capsule</span></div></div>
+          </div>
+
+          <div class="premium-bonus">
+             <div><p style="margin:0; font-weight:600;">Daily Health Tracker Included</p></div>
+             <span style="background:var(--accent-green); color:white; padding:4px 10px; border-radius:20px; font-size:12px;">Freebie</span>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+            <button class="btn-premium btn-outline">Add to Cart</button>
+            <button class="btn-premium btn-solid">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-section">
+        <div class="tab-nav">
+          <button class="tab-trigger is-active">Description</button>
+          <button class="tab-trigger">Key Benefits</button>
+          <button class="tab-trigger">Nutritional Info</button>
+        </div>
+        <div class="tab-panel is-active">
+          <p><b>Heart Lipid Lite</b> is specifically formulated for adults (35–55yo) with a family history of rising lipids. Our "Lite" formulation focuses on essential cardiometabolic markers without overwhelming your system.</p>
+          <table class="nutri-table" style="margin-top:30px;">
+             <thead><tr><th>Ingredient</th><th>Daily Dose</th><th>Rationale</th></tr></thead>
+             <tbody>
+               <tr><td>Omega-3</td><td>1,000 mg EPA</td><td>Triglyceride lowering</td></tr>
+               <tr><td>CoQ10</td><td>100 mg</td><td>Endothelial support</td></tr>
+               <tr><td>Garlic</td><td>600 mg</td><td>LDL/BP reduction</td></tr>
+             </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<style>
+  .product-offers {
+    padding: 40px 0;
+    background: #f1f8e9;
+  }
+  .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .offer-card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 20px;
+    border: 2px dashed #2d6a4f;
+    text-align: center;
+    transition: 0.3s;
+  }
+  .offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+  .offer-badge {
+    display: inline-block;
+    background: #1b4332;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .offer-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1b4332;
+    margin-bottom: 8px;
+  }
+  .offer-desc {
+    font-size: 14px;
+    color: #666;
+  }
+
+  @media (max-width: 768px) {
+    .offers-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="product-offers">
+  <div class="container">
+    <div class="offers-grid">
+      <div class="offer-card">
+        <span class="offer-badge">BEST VALUE</span>
+        <div class="offer-title">Buy 3 Get 1 FREE</div>
+        <p class="offer-desc">Supercharge your health and save 33% today.</p>
+      </div>
+      <div class="offer-card">
+        <span class="offer-badge">MOST POPULAR</span>
+        <div class="offer-title">Flat 20% OFF</div>
+        <p class="offer-desc">On your first purchase. Use code: ZEN20</p>
+      </div>
+      <div class="offer-card">
+        <span class="offer-badge">FREE SHIPPING</span>
+        <div class="offer-title">No Delivery Fee</div>
+        <p class="offer-desc">Valid on all orders above ₹499.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Offers",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter store using password"
+    }
+  },
+  "sections": {
+    "header": {
+      "announcement": "Announcement",
+      "menu": "Menu",
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "footer": {
+        "newsletter_title": "Subscribe to our newsletter",
+        "newsletter_button": "Join"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": {
+        "label": "Quantity",
+        "input_label": "Quantity for {{ product }}"
+      }
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "refresh_page": "Page refreshed"
+  }
+}

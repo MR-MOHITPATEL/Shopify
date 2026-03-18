@@ -1,0 +1,155 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "product-hero",
+      "custom_css": [],
+      "settings": {}
+    },
+    "benefits_pxLbRV": {
+      "type": "benefits",
+      "blocks": {
+        "benefit_RkhCWY": {
+          "type": "benefit",
+          "settings": {
+            "title": "asd",
+            "text": "100% plant-based and organic"
+          }
+        },
+        "benefit_WeHNHG": {
+          "type": "benefit",
+          "settings": {
+            "title": "Science-Backed",
+            "text": "Formulated by health experts"
+          }
+        },
+        "benefit_yPqyYi": {
+          "type": "benefit",
+          "settings": {
+            "title": "Doctor Recommended",
+            "text": "Trusted by 500+ professionals"
+          }
+        },
+        "benefit_46fern": {
+          "type": "benefit",
+          "settings": {
+            "title": "Fast Shipping",
+            "text": "Delivery within 2-3 business days"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_RkhCWY",
+        "benefit_WeHNHG",
+        "benefit_yPqyYi",
+        "benefit_46fern"
+      ],
+      "name": "Benefits",
+      "settings": {}
+    },
+    "1773297530685dbdf3": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "offers": {
+      "type": "product-offers",
+      "settings": {}
+    },
+    "ingredients_HATRtV": {
+      "type": "ingredients",
+      "blocks": {
+        "ingredient_jcwLak": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Brahmi",
+            "description": "Enhances cognitive function and memory."
+          }
+        },
+        "ingredient_RkHq3B": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Shatavari",
+            "description": "Supports hormonal balance and vitality."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_jcwLak",
+        "ingredient_RkHq3B"
+      ],
+      "name": "Ingredients",
+      "settings": {
+        "heading": "Clean, Science-Backed Ingredients",
+        "subheading": "We use only the highest quality botanical extracts and clinically proven actives."
+      }
+    },
+    "ingredients": {
+      "type": "product-ingredients",
+      "settings": {}
+    },
+    "suitable": {
+      "type": "product-suitable",
+      "settings": {}
+    },
+    "faq_yF3qdV": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_49AaPk": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are these products natural?",
+            "answer": "Yes, all our products are made from 100% natural, ethically sourced ingredients."
+          }
+        },
+        "faq_item_wXTKmW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it safe for daily use?",
+            "answer": "Absolutely. Our formulas are science-backed and safe for long-term daily consumption."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_49AaPk",
+        "faq_item_wXTKmW"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    },
+    "faq": {
+      "type": "product-faq",
+      "settings": {}
+    },
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "settings": {}
+    },
+    "sticky-bar": {
+      "type": "sticky-buy-bar",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "benefits_pxLbRV",
+    "1773297530685dbdf3",
+    "offers",
+    "ingredients_HATRtV",
+    "ingredients",
+    "suitable",
+    "faq_yF3qdV",
+    "faq",
+    "cart-drawer",
+    "sticky-bar"
+  ]
+}

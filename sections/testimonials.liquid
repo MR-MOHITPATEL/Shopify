@@ -1,0 +1,54 @@
+<section class="section">
+  <div class="container">
+    <h2 class="section-title text-center">{{ section.settings.title }}</h2>
+    
+    <div style="overflow-x: auto; display: flex; gap: var(--spacing-lg); padding: var(--spacing-md) 0; scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none;">
+      {% for block in section.blocks %}
+        <div style="min-width: 300px; flex: 0 0 auto; background: var(--color-secondary); padding: var(--spacing-lg); border-radius: var(--radius-md); scroll-snap-align: start;">
+          <div class="rating" style="margin-bottom: var(--spacing-sm);">{{ block.settings.stars }}</div>
+          <p style="font-style: italic; margin-bottom: var(--spacing-md);">"{{ block.settings.comment }}"</p>
+          <div class="flex items-center gap-md">
+            {% if block.settings.author_image != blank %}
+              <img src="{{ block.settings.author_image | image_url: width: 100 }}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+            {% endif %}
+            <div>
+              <p style="font-weight: 700; font-size: 14px;">{{ block.settings.author }}</p>
+              {% if block.settings.verified %}<span style="font-size: 10px; color: var(--color-success);">✓ Verified Buyer</span>{% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "What Our Community Says" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "text", "id": "stars", "label": "Stars", "default": "★★★★★" },
+        { "type": "textarea", "id": "comment", "label": "Comment", "default": "Transformative results! My hair feels much thicker after 3 months." },
+        { "type": "text", "id": "author", "label": "Author Name", "default": "Ananya Sharma" },
+        { "type": "image_picker", "id": "author_image", "label": "Author Image" },
+        { "type": "checkbox", "id": "verified", "label": "Verified Buyer", "default": true }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        { "type": "testimonial", "settings": { "author": "Arun Kumar", "comment": "The plant protein tastes amazing and digests easily. Highly recommend!" } },
+        { "type": "testimonial", "settings": { "author": "Sanya Malhotra", "comment": "Finally found a clean immunity booster that actually works. 5 stars!" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,310 @@
+<style>
+  .product-hero {
+    padding: 60px 0;
+    background: #fff;
+  }
+  .product-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .product-gallery {
+    position: sticky;
+    top: 20px;
+  }
+  .main-image-container {
+    background: #f8f9fa;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .main-image-container img {
+    width: 100%;
+    display: block;
+    mix-blend-mode: multiply;
+  }
+  .thumbnail-list {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+  }
+  .thumbnail-item {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .product-info-column h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+    color: #1b4332;
+  }
+  .product-price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d6a4f;
+    margin-bottom: 24px;
+  }
+  .product-form-container {
+    margin-top: 32px;
+    padding: 24px;
+    background: #f8f9fa;
+    border-radius: 20px;
+  }
+  .qty-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1b4332;
+  }
+  
+  /* Custom Quantity Selector */
+  .qty-selector {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 24px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    width: fit-content;
+    overflow: hidden;
+  }
+  .qty-btn {
+    background: none;
+    border: none;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    color: #1b4332;
+    transition: background 0.2s;
+  }
+  .qty-btn:hover {
+    background: #f0f0f0;
+  }
+  .qty-input {
+    width: 50px;
+    height: 45px;
+    border: none;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    -moz-appearance: textfield;
+  }
+  .qty-input::-webkit-outer-spin-button,
+  .qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .atc-btn {
+    width: 100%;
+    background: white;
+    color: #1b4332;
+    padding: 18px;
+    border: 2px solid #1b4332;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .atc-btn:hover {
+    background: #f9f9f9;
+  }
+
+  .buy-now-btn {
+    width: 100%;
+    background: #1b4332;
+    color: #fff;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .buy-now-btn:hover {
+    background: #2d6a4f;
+  }
+
+  @media (max-width: 768px) {
+    .product-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .product-gallery {
+      position: static;
+    }
+  }
+</style>
+
+<section class="product-hero">
+  <div class="container">
+    <div class="product-hero-grid">
+      <!-- Image Gallery (Carousel) -->
+      <div class="product-gallery">
+        <div class="product-carousel">
+          <div class="carousel-track">
+            {% for media in product.media %}
+              <div class="carousel-slide">
+                <img src="{{ media | image_url: width: 1200 }}" alt="{{ product.title }} - {{ forloop.index }}">
+              </div>
+            {% endfor %}
+            {% if product.media.size == 0 %}
+              <div class="carousel-slide" style="aspect-ratio: 1; background: #f8f9fa; display: flex; align-items: center; justify-content: center; font-size: 80px;">
+                💊
+              </div>
+            {% endif %}
+          </div>
+          
+          {% if product.media.size > 1 %}
+            <div class="carousel-nav">
+              <button class="carousel-arrow prev">←</button>
+              <button class="carousel-arrow next">→</button>
+            </div>
+            <div class="carousel-pagination">
+              {% for media in product.media %}
+                <span class="carousel-dot {% if forloop.first %}active{% endif %}"></span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if product.media.size > 1 %}
+          <div class="carousel-thumbnails">
+            {% for media in product.media %}
+              <div class="carousel-thumbnail {% if forloop.first %}active{% endif %}">
+                <img src="{{ media | image_url: width: 200 }}" alt="Thumbnail {{ forloop.index }}">
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Info -->
+      <div class="product-info-column">
+        <nav class="breadcrumb" style="font-size: 13px; color: #999; margin-bottom: 16px;">
+          <a href="/">Home</a> / <a href="/collections/all">Products</a> / {{ product.title }}
+        </nav>
+        
+        <h1 style="font-size: 44px; margin-bottom: 12px; font-weight: 500;">{{ product.title }}</h1>
+        <div class="product-price" style="font-size: 32px; font-weight: 600; color: #1b4332; margin-bottom: 24px;">
+          {{ product.price | money }}
+        </div>
+        
+        <div style="background: #f1f8e6; padding: 12px 16px; border-radius: 8px; display: inline-block; font-size: 14px; font-weight: 600; color: #1b4332; margin-bottom: 24px;">
+          ✓ In Stock • Ships in 24 Hours
+        </div>
+
+        <div class="product-description" style="line-height: 1.7; color: #4a554a; margin-bottom: 32px; font-size: 16px;">
+          {{ product.description }}
+        </div>
+
+        <div class="product-form-container" style="background: #fff; padding: 0; border-radius: 0;">
+          <div style="margin-bottom: 32px;">
+            <label class="qty-label">SELECT QUANTITY</label>
+            <div class="qty-selector">
+              <button type="button" class="qty-btn minus" onclick="updateQty(-1)">−</button>
+              <input type="number" name="quantity" class="qty-input" value="1" min="1" id="Quantity-{{ product.id }}">
+              <button type="button" class="qty-btn plus" onclick="updateQty(1)">+</button>
+            </div>
+          </div>
+          
+          <div class="button-group">
+            <button type="button" class="buy-now-btn" onclick="buyNow()" style="background: #ffc107; color: #000; border: none;">BUY IT NOW</button>
+            <button type="button" class="atc-btn" onclick="addToCartAjax()" style="border: 1px solid #ddd; background: #fff; color: #1b4332;">ADD TO CART</button>
+          </div>
+        </div>
+
+        <div style="margin-top: 48px; display: flex; gap: 24px; border-top: 1px solid #eee; padding-top: 24px;">
+          <div style="text-align: center; flex: 1;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🚚</div>
+            <div style="font-size: 12px; font-weight: 600;">Free Shipping</div>
+          </div>
+          <div style="text-align: center; flex: 1;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🛡️</div>
+            <div style="font-size: 12px; font-weight: 600;">Secure Payment</div>
+          </div>
+          <div style="text-align: center; flex: 1;">
+            <div style="font-size: 24px; margin-bottom: 8px;">🔄</div>
+            <div style="font-size: 12px; font-weight: 600;">30-Day Policy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function updateQty(amount) {
+    const input = document.getElementById('Quantity-{{ product.id }}');
+    let value = parseInt(input.value) || 1;
+    value += amount;
+    if (value < 1) value = 1;
+    input.value = value;
+  }
+
+  function buyNow() {
+    const qty = document.getElementById('Quantity-{{ product.id }}').value;
+    const variantId = '{{ product.selected_or_first_available_variant.id }}';
+    window.location.href = `/cart/${variantId}:${qty}`;
+  }
+
+  async function addToCartAjax() {
+    const qty = document.getElementById('Quantity-{{ product.id }}').value;
+    const variantId = '{{ product.selected_or_first_available_variant.id }}';
+    
+    try {
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          'items': [{ 'id': variantId, 'quantity': qty }]
+        })
+      });
+      
+      // Open drawer and refresh it
+      if (typeof openCartDrawer === 'function') {
+        openCartDrawer();
+        if (typeof refreshCartDrawer === 'function') {
+          await refreshCartDrawer();
+        }
+      } else {
+        window.location.href = '/cart';
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product Hero",
+  "settings": []
+}
+{% endschema %}
+

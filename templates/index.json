@@ -1,0 +1,51 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero-banner": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Treatment for a better you.",
+        "subheading": "Modern healthcare for modern life. Personalised prescriptions delivered to your door.",
+        "button_label": "Find My Treatment",
+        "button_link": "",
+        "overlay_text": "WELLNESS"
+      }
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "title": "Personalised solutions for you",
+        "collection": ""
+      }
+    },
+    "doctor-expert": {
+      "type": "doctor-expert",
+      "settings": {
+        "heading": "The Minds Behind Your Health",
+        "image": "shopify://shop_images/Gemini_Generated_Image_mua3g6mua3g6mua3.png",
+        "name": "Dr. Sarah Chen",
+        "description": "With over 15 years of experience in nutraceutical research, Dr. Chen leads our clinical formulations focused on mental health and longevity."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    }
+  },
+  "order": [
+    "hero-banner",
+    "featured-products",
+    "doctor-expert",
+    "faq"
+  ]
+}

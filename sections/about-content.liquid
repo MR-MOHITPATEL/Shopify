@@ -1,0 +1,104 @@
+<section class="section about-content">
+  <div class="container">
+    <!-- Mission Statement -->
+    <div class="mission-section text-center" style="margin-bottom: 96px; max-width: 800px; margin-left: auto; margin-right: auto;">
+      <h2 class="section-title">{{ section.settings.mission_heading }}</h2>
+      <p style="font-size: 20px; color: var(--color-text-muted); line-height: 1.6;">{{ section.settings.mission_text }}</p>
+    </div>
+
+    <!-- Brand Story -->
+    <div class="grid grid-cols-1 grid-cols-2 gap-xxl items-center" style="margin-bottom: 96px;">
+      <div class="about-image">
+        {% if section.settings.brand_image != blank %}
+          <img src="{{ section.settings.brand_image | image_url: width: 1000 }}" alt="Brand Story" style="border-radius: var(--radius-lg); width: 100%;">
+        {% else %}
+          <div style="background: #eee; aspect-ratio: 1; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 80px;">🌱</div>
+        {% endif %}
+      </div>
+      <div class="about-text">
+        <h2 style="font-size: 36px; margin-bottom: 24px;">{{ section.settings.brand_heading }}</h2>
+        <div style="line-height: 1.8; color: var(--color-text-muted);">
+          {{ section.settings.brand_story }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Doctor Info -->
+    <div class="grid grid-cols-1 grid-cols-2 gap-xxl items-center">
+      <div class="about-text">
+        <h2 style="font-size: 36px; margin-bottom: 24px;">{{ section.settings.doctor_heading }}</h2>
+        <h3 style="font-size: 24px; color: var(--color-primary); margin-bottom: 16px;">{{ section.settings.doctor_name }}</h3>
+        <div style="line-height: 1.8; color: var(--color-text-muted);">
+          {{ section.settings.doctor_info }}
+        </div>
+      </div>
+      <div class="about-image">
+        {% if section.settings.doctor_image != blank %}
+          <img src="{{ section.settings.doctor_image | image_url: width: 1000 }}" alt="Doctor Expert" style="border-radius: var(--radius-lg); width: 100%;">
+        {% else %}
+          <div style="background: #eee; aspect-ratio: 4/5; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 80px;">👩‍⚕️</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "mission_heading",
+      "label": "Mission Heading",
+      "default": "Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "mission_text",
+      "label": "Mission Text",
+      "default": "We're on a mission to simplify holistic health through modern science and traditional wisdom."
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Brand Image"
+    },
+    {
+      "type": "text",
+      "id": "brand_heading",
+      "label": "Brand Heading",
+      "default": "The ZenJeevani Story"
+    },
+    {
+      "type": "richtext",
+      "id": "brand_story",
+      "label": "Brand Story",
+      "default": "<p>We believe that health should be accessible, transparent, and personalized. Our journey started with a simple question: why is it so hard to find high-quality, science-backed supplements that actually work?</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "doctor_image",
+      "label": "Doctor Image"
+    },
+    {
+      "type": "text",
+      "id": "doctor_heading",
+      "label": "Doctor Heading",
+      "default": "Expert Guidance"
+    },
+    {
+      "type": "text",
+      "id": "doctor_name",
+      "label": "Doctor Name",
+      "default": "Dr. Sarah Chen"
+    },
+    {
+      "type": "richtext",
+      "id": "doctor_info",
+      "label": "Doctor Information",
+      "default": "<p>With over 15 years of experience in nutraceutical research, Dr. Chen leads our clinical formulations focused on mental health and longevity.</p>"
+    }
+  ]
+}
+{% endschema %}

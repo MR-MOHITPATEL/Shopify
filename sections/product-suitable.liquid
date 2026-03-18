@@ -1,0 +1,103 @@
+<style>
+  .product-suitable {
+    padding: 80px 0;
+    background: #f1f8e9;
+  }
+  .suitable-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .suitable-container h2 {
+    font-size: 32px;
+    color: #1b4332;
+    margin-bottom: 40px;
+  }
+  .suitable-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .suitable-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 24px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+  .suitable-icon {
+    font-size: 30px;
+    background: #d8f3dc;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .suitable-card h4 {
+    margin: 0 0 4px 0;
+    color: #1b4332;
+    font-size: 18px;
+  }
+  .suitable-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  @media (max-width: 600px) {
+    .suitable-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="product-suitable">
+  <div class="container">
+    <div class="suitable-container">
+      <h2>Is This Solution For You?</h2>
+      <div class="suitable-grid">
+        <div class="suitable-card">
+          <div class="suitable-icon">❤️</div>
+          <div>
+            <h4>High BP Support</h4>
+            <p>For those looking to manage hypertension through natural Ayurvedic pathways.</p>
+          </div>
+        </div>
+        <div class="suitable-card">
+          <div class="suitable-icon">🏢</div>
+          <div>
+            <h4>High-Stress Careers</h4>
+            <p>Perfect for professionals dealing with chronic stress that impacts heart health.</p>
+          </div>
+        </div>
+        <div class="suitable-card">
+          <div class="suitable-icon">🧬</div>
+          <div>
+            <h4>Genetic Prisposition</h4>
+            <p>Ideal for proactive wellness if you have a family history of cardiac issues.</p>
+          </div>
+        </div>
+        <div class="suitable-card">
+          <div class="suitable-icon">🧘</div>
+          <div>
+            <h4>Longevity Seekers</h4>
+            <p>Anyone over 35 wanting to maintain arterial youth and cardiovascular vitality.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Suitable",
+  "settings": []
+}
+{% endschema %}

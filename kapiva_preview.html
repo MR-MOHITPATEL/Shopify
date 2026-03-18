@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapiva-Style Product Preview - ZenJeevani</title>
+    <style>
+        :root {
+            --color-primary: #1b4332;
+            --color-secondary: #2d6a4f;
+            --color-accent: #ffc107;
+            --color-light: #f1f8e9;
+            --color-white: #ffffff;
+            --radius-xl: 24px;
+            --radius-lg: 20px;
+            --radius-md: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            background: #fff;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero */
+        .hero { padding: 60px 0; }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .main-img { background: #f8f9fa; border-radius: var(--radius-xl); padding: 40px; }
+        .main-img img { width: 100%; mix-blend-mode: multiply; }
+        .hero-info h1 { font-size: 36px; color: var(--color-primary); margin: 0 0 10px; }
+        .price { font-size: 28px; font-weight: 700; color: var(--color-secondary); margin-bottom: 20px; }
+        .atc-btn { width: 100%; background: var(--color-primary); color: #fff; border: none; padding: 18px; border-radius: var(--radius-md); font-weight: 700; cursor: pointer; }
+
+        /* Offers */
+        .offers { padding: 40px 0; background: var(--color-light); }
+        .offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .offer-card { background: #fff; padding: 20px; border-radius: var(--radius-lg); border: 2px dashed var(--color-secondary); text-align: center; }
+
+        /* Benefits */
+        .benefits { padding: 80px 0; text-align: center; }
+        .benefit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 40px; }
+        .benefit-icon { width: 80px; height: 80px; background: #d8f3dc; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 32px; }
+
+        /* Sticky Bar Mobile */
+        .sticky-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 12px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between; z-index: 1000; box-sizing: border-box; }
+        .buy-now { background: var(--color-accent); color: #000; padding: 12px 24px; border-radius: 8px; font-weight: 700; border: none; }
+
+        @media (max-width: 768px) {
+            .hero-grid, .offers-grid, .benefit-grid { grid-template-columns: 1fr; }
+            .hero-grid { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="main-img">
+                    <img src="https://picsum.photos/id/102/1000/1000" alt="Product">
+                </div>
+                <div class="hero-info">
+                    <h1>Ayurvedic Vitality Plus</h1>
+                    <div class="price">₹1,299.00</div>
+                    <p>Unlock peak performance with our traditional blend of Ashwagandha and Shilajit.</p>
+                    <button class="atc-btn">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offers">
+        <div class="container">
+            <div class="offers-grid">
+                <div class="offer-card"><strong>Buy 3 Get 1 FREE</strong><br><small>Save 33% Today</small></div>
+                <div class="offer-card"><strong>Flat 20% OFF</strong><br><small>Code: ZEN20</small></div>
+                <div class="offer-card"><strong>Free Shipping</strong><br><small>On orders above 499</small></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2>ZenJeevani Excellence</h2>
+            <div class="benefit-grid">
+                <div><div class="benefit-icon">🌿</div><strong>100% Natural</strong></div>
+                <div><div class="benefit-icon">👨‍⚕️</div><strong>Expert Approved</strong></div>
+                <div><div class="benefit-icon">🔬</div><strong>Lab Tested</strong></div>
+                <div><div class="benefit-icon">❤️</div><strong>Holistic Care</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sticky-bar">
+        <div><strong>Ayurvedic Vitality Plus</strong><br><small>₹1,299.00</small></div>
+        <button class="buy-now">BUY NOW</button>
+    </div>
+
+</body>
+</html>

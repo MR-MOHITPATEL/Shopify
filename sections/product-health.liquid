@@ -1,0 +1,186 @@
+<style>
+  .product-health-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .product-main-image {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .product-main-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .product-thumbnails {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .product-thumbnails img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+  }
+
+  .product-info-health {
+    max-width: 500px;
+  }
+
+  @media (max-width: 768px) {
+    .product-health-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .product-main-image {
+      max-width: 100%;
+    }
+
+    .product-thumbnails {
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+  }
+</style>
+
+<section class="product-health section" style="background-color: var(--color-bg);">
+  <div class="container">
+    <div class="product-health-grid">
+      <!-- Left side: Gallery -->
+      <div class="product-gallery">
+        <div class="product-main-image">
+          {% if product.featured_media %}
+            <img src="{{ product.featured_media | image_url: width: 1200 }}" alt="{{ product.title }}">
+          {% else %}
+            <div style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 80px;">💊</div>
+          {% endif %}
+        </div>
+        
+        <div class="product-thumbnails">
+          {% for media in product.media limit: 4 %}
+            <img src="{{ media | image_url: width: 300 }}" alt="{{ product.title }}">
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Right side: Info -->
+      <div class="product-info-health">
+        <h1 class="hero-heading" style="font-size: 48px; margin-bottom: 8px;">{{ product.title }}</h1>
+        <div class="price-box" style="color: var(--color-accent); font-size: 28px; font-weight: 600; margin-bottom: 24px;">
+          {{ product.price | money }}
+        </div>
+        
+        <div style="background: var(--color-secondary); padding: 16px; border-radius: var(--radius-md); margin-bottom: 32px; display: inline-block;">
+          <p style="font-size: 14px; font-weight: 500; color: var(--color-primary);">Price: ₹950 / 30 days</p>
+        </div>
+
+        <div class="product-description" style="line-height: 1.8; color: var(--color-text-muted); margin-bottom: 32px;">
+          {{ product.description }}
+        </div>
+
+        <div class="healthcare-meta" style="margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
+            <span style="font-weight: 600; color: var(--color-primary);">Dosage:</span> 2 capsules + 1 sachet daily
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
+            <span style="font-weight: 600; color: var(--color-primary);">Target:</span> Stressed office workers, 40–60 years old
+          </div>
+        </div>
+
+        <form method="post" action="/cart/add" class="product-form">
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+          
+          <div class="quantity-selector" style="margin-bottom: 24px;">
+            <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500;">Quantity</label>
+            <input type="number" name="quantity" value="1" min="1" style="padding: 12px; border: 1px solid var(--color-border); border-radius: var(--radius-md); width: 80px;">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 16px;">
+            Add to Cart
+          </button>
+        </form>
+
+        <div class="benefits-icons" style="margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; background: white; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            <span style="font-size: 20px;">👨‍⚕️</span> Doctor formulated
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; background: white; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            <span style="font-size: 20px;">🔬</span> Clinically researched
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; background: white; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            <span style="font-size: 20px;">🌿</span> Natural ingredients
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; background: white; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+            <span style="font-size: 20px;">❤️</span> Supports blood pressure
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ingredient Table -->
+    <div class="ingredient-section" style="margin-top: 96px;">
+      <h2 class="section-title text-center" style="margin-bottom: 48px;">Transparency & Ingredients</h2>
+      <div style="overflow-x: auto; background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--color-border);">
+        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+          <thead>
+            <tr style="background: var(--color-secondary); text-align: left;">
+              <th style="padding: 20px; font-weight: 600; color: var(--color-primary);">Active Ingredient</th>
+              <th style="padding: 20px; font-weight: 600; color: var(--color-primary);">Daily Dose</th>
+              <th style="padding: 20px; font-weight: 600; color: var(--color-primary);">Form</th>
+              <th style="padding: 20px; font-weight: 600; color: var(--color-primary);">Key Benefit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: 20px;">Magnesium (glycinate/citrate)</td>
+              <td style="padding: 20px;">200–300 mg</td>
+              <td style="padding: 20px;">Capsule</td>
+              <td style="padding: 20px;">Vascular relaxation</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: 20px;">Potassium (citrate)</td>
+              <td style="padding: 20px;">1000 mg</td>
+              <td style="padding: 20px;">Powder sachet</td>
+              <td style="padding: 20px;">BP modulation</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--color-border);">
+              <td style="padding: 20px;">Beetroot nitrate</td>
+              <td style="padding: 20px;">400 mg</td>
+              <td style="padding: 20px;">Capsule</td>
+              <td style="padding: 20px;">Vasodilation</td>
+            </tr>
+            <tr>
+              <td style="padding: 20px;">Ashwagandha (KSM-66)</td>
+              <td style="padding: 20px;">300 mg</td>
+              <td style="padding: 20px;">Capsule</td>
+              <td style="padding: 20px;">Stress reduction</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Health Product Detailed",
+  "settings": []
+}
+{% endschema %}

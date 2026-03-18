@@ -1,0 +1,12 @@
+# Shopify Theme Development
+.DS_Store
+Thumbs.db
+
+# Preview files
+preview.html
+
+# VS Code
+.vscode/
+
+# Local server logs
+*.log

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page Preview - ZenJeevani</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-body-family: 'Inter', sans-serif;
+            --font-heading-family: 'Inter', sans-serif;
+        }
+        body { background-color: var(--color-bg); }
+        .preview-label {
+            background: #1a2b23;
+            color: white;
+            padding: 4px 12px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-label">Product Page Static Preview</div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-logo">ZenJeevani</div>
+                <nav class="nav-links">
+                    <a href="preview.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Weight Loss</a>
+                    <a href="#" class="nav-link">Mental Health</a>
+                    <a href="#" class="nav-link">Hair Growth</a>
+                    <a href="about-preview.html" class="nav-link">About Us</a>
+                </nav>
+                <div class="header-icons">
+                    <a href="#" class="nav-link">Login</a>
+                    <div class="header-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <div class="header-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Health Section Preview -->
+    <section class="product-health section" style="padding-top: 120px;">
+        <div class="container">
+            <div class="grid grid-cols-1 grid-cols-2 gap-xxl">
+                <!-- Left side: Gallery -->
+                <div class="product-gallery">
+                    <div class="product-main-image" style="background: white; aspect-ratio: 1; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 120px; box-shadow: var(--shadow-sm);">💊</div>
+                    <div class="grid grid-cols-4 gap-md" style="margin-top: 24px;">
+                        <div style="background: #eee; aspect-ratio: 1; border-radius: var(--radius-md); border: 1px solid var(--color-border);"></div>
+                        <div style="background: #eee; aspect-ratio: 1; border-radius: var(--radius-md); border: 1px solid var(--color-border);"></div>
+                        <div style="background: #eee; aspect-ratio: 1; border-radius: var(--radius-md); border: 1px solid var(--color-border);"></div>
+                        <div style="background: #eee; aspect-ratio: 1; border-radius: var(--radius-md); border: 1px solid var(--color-border);"></div>
+                    </div>
+                </div>
+
+                <!-- Right side: Info -->
+                <div class="product-info-health">
+                    <h1 class="hero-heading" style="font-size: 48px; margin-bottom: 8px;">BP Balance Daily</h1>
+                    <div class="price-box" style="color: var(--color-accent); font-size: 28px; font-weight: 600; margin-bottom: 24px;">₹950</div>
+                    
+                    <div style="background: var(--color-secondary); padding: 16px; border-radius: var(--radius-md); margin-bottom: 32px; display: inline-block;">
+                        <p style="font-size: 14px; font-weight: 500; color: var(--color-primary);">Price: ₹950 / 30 days</p>
+                    </div>
+
+                    <div class="product-description" style="line-height: 1.8; color: var(--color-text-muted); margin-bottom: 32px;">
+                        <p>Our BP Balance Daily formula is clinically designed to support healthy circulation and maintain blood pressure within normal ranges. Combining specific mineral chelates with potent botanical nitrates, this supplement provides comprehensive cardiovascular support.</p>
+                    </div>
+
+                    <div class="healthcare-meta" style="margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
+                            <span style="font-weight: 600; color: var(--color-primary);">Dosage:</span> 2 capsules + 1 sachet daily
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
+                            <span style="font-weight: 600; color: var(--color-primary);">Target:</span> Stressed office workers, 40–60 years old
+                        </div>
+                    </div>
+
+                    <div class="product-form">
+                        <div class="quantity-selector" style="margin-bottom: 24px;">
+                            <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500;">Quantity</label>
+                            <input type="number" value="1" min="1" style="padding: 12px; border: 1px solid var(--color-border); border-radius: var(--radius-md); width: 80px;">
+                        </div>
+
+                        <button class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 16px;">
+                            Add to Cart
+                        </button>
+                    </div>
+
+                    <div class="benefits-icons" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; background: white; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                            <span style="font-size: 20px;">👨‍⚕️</span> Doctor formulated
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; background: white; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                            <span style="font-size: 20px;">🔬</span> Clinically researched
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; background: white; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                            <span style="font-size: 20px;">🌿</span> Natural ingredients
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; background: white; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
+                            <span style="font-size: 20px;">❤️</span> Supports blood pressure
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingredient Table Preview -->
+            <div class="ingredient-section" style="margin-top: 96px;">
+                <h2 class="section-title text-center" style="margin-bottom: 48px;">Transparency & Ingredients</h2>
+                <div style="overflow-x: auto; background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid var(--color-border);">
+                    <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+                        <thead>
+                            <tr style="background: var(--color-secondary); text-align: left;">
+                                <th style="padding: 20px; font-weight: 600; color: var(--color-primary);">Active Ingredient</th>
+                                <th style="padding: 20px; font-weight: 600; color: var(--color-primary);">Daily Dose</th>
+                                <th style="padding: 20px; font-weight: 600; color: var(--color-primary);">Form</th>
+                                <th style="padding: 20px; font-weight: 600; color: var(--color-primary);">Key Benefit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 20px;">Magnesium (glycinate/citrate)</td>
+                                <td style="padding: 20px;">200–300 mg</td>
+                                <td style="padding: 20px;">Capsule</td>
+                                <td style="padding: 20px;">Vascular relaxation</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 20px;">Potassium (citrate)</td>
+                                <td style="padding: 20px;">1000 mg</td>
+                                <td style="padding: 20px;">Powder sachet</td>
+                                <td style="padding: 20px;">BP modulation</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 20px;">Beetroot nitrate</td>
+                                <td style="padding: 20px;">400 mg</td>
+                                <td style="padding: 20px;">Capsule</td>
+                                <td style="padding: 20px;">Vasodilation</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 20px;">Ashwagandha (KSM-66)</td>
+                                <td style="padding: 20px;">300 mg</td>
+                                <td style="padding: 20px;">Capsule</td>
+                                <td style="padding: 20px;">Stress reduction</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2026 ZenJeevani. All rights reserved. Built for holistic wellness.
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/theme.js"></script>
+</body>
+</html>

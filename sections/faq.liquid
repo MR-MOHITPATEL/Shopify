@@ -1,0 +1,59 @@
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-title text-center">{{ section.settings.title }}</h2>
+    
+    <div class="faq-container">
+      {% for block in section.blocks %}
+        <details class="faq-item">
+          <summary>{{ block.settings.question }}</summary>
+          <div class="faq-content">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How soon can I see results?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Results vary by individual, but most see significant changes within 8-12 weeks of consistent use."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq_item", "settings": { "question": "Are these products natural?", "answer": "Yes, all our products are made from 100% natural, ethically sourced ingredients." } },
+        { "type": "faq_item", "settings": { "question": "Is it safe for daily use?", "answer": "Absolutely. Our formulas are science-backed and safe for long-term daily consumption." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

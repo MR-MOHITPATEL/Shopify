@@ -1,0 +1,467 @@
+{% doc %}
+  @prompt
+    generate a section to integrate meta objects here
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-metaobject-display-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-metaobject-container-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.content_gap }}px;
+  }
+
+  .ai-metaobject-header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-metaobject-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 {{ block.settings.content_gap | divided_by: 2 }}px 0;
+  }
+
+  .ai-metaobject-description-{{ ai_gen_id }} {
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-weight: {{ block.settings.body_font.weight }};
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+  }
+
+  .ai-metaobject-content-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.content_gap }}px;
+  }
+
+  .ai-metaobject-item-{{ ai_gen_id }} {
+    padding: {{ block.settings.item_padding }}px;
+    background-color: {{ block.settings.item_background_color }};
+    border-radius: {{ block.settings.item_border_radius }}px;
+    border: 1px solid {{ block.settings.item_border_color }};
+  }
+
+  .ai-metaobject-item-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    margin-bottom: {{ block.settings.content_gap | divided_by: 2 }}px;
+  }
+
+  .ai-metaobject-item-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.item_title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 8px 0;
+  }
+
+  .ai-metaobject-item-text-{{ ai_gen_id }} {
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-weight: {{ block.settings.body_font.weight }};
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+  }
+
+  .ai-metaobject-empty-{{ ai_gen_id }} {
+    padding: 40px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: {{ block.settings.border_radius }}px;
+    color: #666;
+  }
+
+  .ai-metaobject-empty-icon-{{ ai_gen_id }} {
+    margin-bottom: 16px;
+  }
+
+  .ai-metaobject-empty-icon-{{ ai_gen_id }} svg {
+    width: 60px;
+    height: 60px;
+    opacity: 0.5;
+  }
+
+  .ai-metaobject-empty-title-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+
+  .ai-metaobject-empty-text-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: #999;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-metaobject-content-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-metaobject-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.8 }}px;
+    }
+
+    .ai-metaobject-item-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.item_title_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-metaobject-display-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.metaobject != blank %}
+    {% assign meta = metaobjects[block.settings.metaobject] %}
+    
+    <div class="ai-metaobject-container-{{ ai_gen_id }}">
+      {% if block.settings.show_header %}
+        <div class="ai-metaobject-header-{{ ai_gen_id }}">
+          {% if block.settings.section_title != blank %}
+            <h2 class="ai-metaobject-title-{{ ai_gen_id }}">{{ block.settings.section_title }}</h2>
+          {% endif %}
+          {% if block.settings.section_description != blank %}
+            <div class="ai-metaobject-description-{{ ai_gen_id }}">{{ block.settings.section_description }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="ai-metaobject-content-{{ ai_gen_id }}">
+        {% if meta %}
+          {% for field in meta.system.fields %}
+            <div class="ai-metaobject-item-{{ ai_gen_id }}">
+              {% if field.type == 'file_reference' and field.value.preview_image %}
+                <img
+                  src="{{ field.value.preview_image | image_url: width: 600 }}"
+                  alt="{{ field.value.alt | escape }}"
+                  class="ai-metaobject-item-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="600"
+                  height="auto"
+                >
+              {% endif %}
+
+              {% if block.settings.show_field_labels %}
+                <h3 class="ai-metaobject-item-title-{{ ai_gen_id }}">{{ field.key | replace: '_', ' ' | capitalize }}</h3>
+              {% endif %}
+
+              <div class="ai-metaobject-item-text-{{ ai_gen_id }}">
+                {% if field.type == 'single_line_text_field' or field.type == 'multi_line_text_field' %}
+                  {{ field.value }}
+                {% elsif field.type == 'rich_text_field' %}
+                  {{ field.value }}
+                {% elsif field.type == 'number_integer' or field.type == 'number_decimal' %}
+                  {{ field.value }}
+                {% elsif field.type == 'date' %}
+                  {{ field.value | date: '%B %d, %Y' }}
+                {% elsif field.type == 'date_time' %}
+                  {{ field.value | date: '%B %d, %Y at %I:%M %p' }}
+                {% elsif field.type == 'url' %}
+                  <a href="{{ field.value }}" target="_blank" rel="noopener">{{ field.value }}</a>
+                {% elsif field.type == 'boolean' %}
+                  {% if field.value %}Yes{% else %}No{% endif %}
+                {% elsif field.type == 'color' %}
+                  <span style="display: inline-block; width: 20px; height: 20px; background-color: {{ field.value }}; border: 1px solid #ccc; border-radius: 4px; vertical-align: middle;"></span>
+                  {{ field.value }}
+                {% elsif field.type == 'rating' %}
+                  {{ field.value.value }} / {{ field.value.scale_max }}
+                {% elsif field.type == 'product_reference' %}
+                  {{ field.value.title }}
+                {% elsif field.type == 'variant_reference' %}
+                  {{ field.value.title }}
+                {% elsif field.type == 'page_reference' %}
+                  {{ field.value.title }}
+                {% elsif field.type == 'collection_reference' %}
+                  {{ field.value.title }}
+                {% else %}
+                  {{ field.value }}
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div class="ai-metaobject-empty-{{ ai_gen_id }}">
+      <div class="ai-metaobject-empty-icon-{{ ai_gen_id }}">
+        {{ 'collection' | placeholder_svg_tag }}
+      </div>
+      <h3 class="ai-metaobject-empty-title-{{ ai_gen_id }}">No metaobject selected</h3>
+      <p class="ai-metaobject-empty-text-{{ ai_gen_id }}">Select a metaobject to display its content</p>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Metaobject display",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Metaobject"
+    },
+    {
+      "type": "text",
+      "id": "metaobject_type",
+      "label": "Metaobject type",
+      "info": "Enter the metaobject type (e.g., product_review, testimonial)"
+    },
+    {
+      "type": "metaobject",
+      "id": "metaobject",
+      "label": "Select metaobject",
+      "metaobject_type": "product_review"
+    },
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Title",
+      "default": "Product Details"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content gap",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Field display"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_field_labels",
+      "label": "Show field labels",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "label": "Item padding",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#1a2b23"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1a2b23"
+    },
+    {
+      "type": "color",
+      "id": "item_background_color",
+      "label": "Item background",
+      "default": "#f4f1ea"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "Item border",
+      "default": "#e0ddd4"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "playfair_display_n7"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "inter_n4"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "item_title_size",
+      "label": "Item title size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Section border radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "label": "Item border radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Metaobject display"
+    }
+  ]
+}
+{% endschema %}

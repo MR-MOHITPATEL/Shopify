@@ -1,0 +1,76 @@
+<section class="section">
+  <div class="container">
+    <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 64px;">
+      <h1 class="hero-heading" style="font-size: 56px;">{{ page.title }}</h1>
+      <p style="font-size: 20px; color: var(--color-text-muted); line-height: 1.6;">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="grid grid-cols-1 grid-cols-2 gap-xxl items-center" style="margin-bottom: 96px;">
+      <div class="about-image">
+        {% if section.settings.image_1 != blank %}
+          <img src="{{ section.settings.image_1 | image_url: width: 1000 }}" alt="Our Story" style="border-radius: var(--radius-lg); width: 100%;">
+        {% else %}
+          <div style="background: #eee; aspect-ratio: 16/9; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+            {{ 'lifestyle-1' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="about-text">
+        <h2 style="font-size: 32px; margin-bottom: 24px;">Our Mission</h2>
+        <p style="line-height: 1.8; color: var(--color-text-muted); margin-bottom: 24px;">{{ section.settings.mission_text }}</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 grid-cols-2 gap-xxl items-center">
+      <div class="about-text">
+        <h2 style="font-size: 32px; margin-bottom: 24px;">Our Science</h2>
+        <p style="line-height: 1.8; color: var(--color-text-muted); margin-bottom: 24px;">{{ section.settings.science_text }}</p>
+      </div>
+      <div class="about-image">
+        {% if section.settings.image_2 != blank %}
+          <img src="{{ section.settings.image_2 | image_url: width: 1000 }}" alt="Our Science" style="border-radius: var(--radius-lg); width: 100%;">
+        {% else %}
+          <div style="background: #eee; aspect-ratio: 16/9; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+            {{ 'lifestyle-2' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "We're on a mission to simplify holistic health through modern science and traditional wisdom."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Mission Image"
+    },
+    {
+      "type": "textarea",
+      "id": "mission_text",
+      "label": "Mission Text",
+      "default": "We believe that health should be accessible, transparent, and personalized. Our journey started with a simple question: why is it so hard to find high-quality, science-backed supplements that actually work?"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Science Image"
+    },
+    {
+      "type": "textarea",
+      "id": "science_text",
+      "label": "Science Text",
+      "default": "Every formulation at ZenJeevani is developed in collaboration with clinical experts and researchers. We source the highest grade botanical extracts and ensure every batch meets our rigorous purity standards."
+    }
+  ]
+}
+{% endschema %}

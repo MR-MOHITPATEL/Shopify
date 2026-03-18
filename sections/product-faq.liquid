@@ -1,0 +1,94 @@
+<style>
+  .product-faq {
+    padding: 80px 0;
+    background: #fff;
+  }
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-container h2 {
+    text-align: center;
+    color: #1b4332;
+    margin-bottom: 40px;
+  }
+  .faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 24px 0;
+    cursor: pointer;
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #1b4332;
+  }
+  .faq-answer {
+    margin-top: 16px;
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    display: none;
+  }
+  .faq-toggle {
+    font-size: 24px;
+    color: #2d6a4f;
+  }
+</style>
+
+<section class="product-faq">
+  <div class="container">
+    <div class="faq-container">
+      <h2>Your Questions Answered</h2>
+      
+      <div class="faq-item" onclick="this.querySelector('.faq-answer').style.display = (this.querySelector('.faq-answer').style.display === 'block' ? 'none' : 'block')">
+        <div class="faq-question">
+          <span>When will I see results?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Consistency is key. Most users report feeling calmer within the first week, while significant BP regulation typically shows within 4-6 weeks of regular intake.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="this.querySelector('.faq-answer').style.display = (this.querySelector('.faq-answer').style.display === 'block' ? 'none' : 'block')">
+        <div class="faq-question">
+          <span>Are there any side effects?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          BP Balance Daily is 100% herbal and free from synthetic chemicals. There are no known side effects when taken at the recommended dosage.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="this.querySelector('.faq-answer').style.display = (this.querySelector('.faq-answer').style.display === 'block' ? 'none' : 'block')">
+        <div class="faq-question">
+          <span>Can I take this with my current BP medication?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Yes, but we recommend maintaining a 1-hour gap between this and your conventional medication. Always consult your physician before starting any new supplement.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="this.querySelector('.faq-answer').style.display = (this.querySelector('.faq-answer').style.display === 'block' ? 'none' : 'block')">
+        <div class="faq-question">
+          <span>Is it safe for long-term use?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Absolutely. In Ayurveda, herbs like Arjuna are considered tonics that strengthen the system over time without creating dependency.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product FAQ",
+  "settings": []
+}
+{% endschema %}

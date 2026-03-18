@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us Preview - ZenJeevani</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-body-family: 'Inter', sans-serif;
+            --font-heading-family: 'Inter', sans-serif;
+        }
+        body { background-color: var(--color-bg); }
+        .preview-label {
+            background: #1a2b23;
+            color: white;
+            padding: 4px 12px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-label">About Us Static Preview</div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-logo">ZenJeevani</div>
+                <nav class="nav-links">
+                    <a href="preview.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Weight Loss</a>
+                    <a href="#" class="nav-link">Mental Health</a>
+                    <a href="#" class="nav-link">Hair Growth</a>
+                    <a href="#" class="nav-link active">About Us</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Content -->
+    <section class="section about-content" style="padding-top: 120px;">
+        <div class="container">
+            <!-- Mission Statement -->
+            <div class="mission-section text-center" style="margin-bottom: 96px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <h2 class="section-title">Our Mission</h2>
+                <p style="font-size: 20px; color: var(--color-text-muted); line-height: 1.6;">We're on a mission to simplify holistic health through modern science and traditional wisdom.</p>
+            </div>
+
+            <!-- Brand Story -->
+            <div class="grid grid-cols-1 grid-cols-2 gap-xxl items-center" style="margin-bottom: 96px;">
+                <div class="about-image">
+                    <div style="background: #eee; aspect-ratio: 1; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 80px;">🌱</div>
+                </div>
+                <div class="about-text">
+                    <h2 style="font-size: 36px; margin-bottom: 24px;">The ZenJeevani Story</h2>
+                    <div style="line-height: 1.8; color: var(--color-text-muted);">
+                        <p>We believe that health should be accessible, transparent, and personalized. Our journey started with a simple question: why is it so hard to find high-quality, science-backed supplements that actually work?</p>
+                        <p style="margin-top: 16px;">ZenJeevani was born from the intersection of ancient Ayurvedic wisdom and modern clinical validation. Every product we create is a testament to our commitment to purity and efficacy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor Info -->
+            <div class="grid grid-cols-1 grid-cols-2 gap-xxl items-center">
+                <div class="about-text">
+                    <h2 style="font-size: 36px; margin-bottom: 24px;">Expert Guidance</h2>
+                    <h3 style="font-size: 24px; color: var(--color-primary); margin-bottom: 16px;">Dr. Sarah Chen</h3>
+                    <div style="line-height: 1.8; color: var(--color-text-muted);">
+                        <p>With over 15 years of experience in nutraceutical research, Dr. Chen leads our clinical formulations focused on mental health and longevity. Her leadership ensures that every batch meets the highest medical standards.</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div style="background: #eee; aspect-ratio: 4/5; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 80px;">👩‍⚕️</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" style="margin-top: 96px;">
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2026 ZenJeevani. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/theme.js"></script>
+</body>
+</html>

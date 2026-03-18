@@ -1,0 +1,111 @@
+<section class="product-page">
+  <div class="container grid grid-cols-1 grid-cols-2 gap-xl">
+    <!-- Left: Gallery -->
+    <div class="product-gallery">
+      <div class="product-main-image-wrapper" style="position: sticky; top: 120px;">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.title }}" class="product-main-image">
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Right: Info -->
+    <div class="product-meta">
+      <div class="product-vendor" style="text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px;">Jaadu Diet</div>
+      <h1 style="font-size: clamp(32px, 5vw, 48px); margin-bottom: 16px;">{{ product.title }}</h1>
+      
+      <div class="price-box" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+        <span class="price-sale" style="color: #d0021b; font-size: 24px; font-weight: 700;">{{ product.price | money }}</span>
+        {% if product.compare_at_price > product.price %}
+          <span class="price-original" style="text-decoration: line-through; color: #999; font-size: 18px;">{{ product.compare_at_price | money }}</span>
+          <span class="badge-save" style="background: #eef6fc; color: #3b4260; padding: 4px 12px; border-radius: 99px; font-size: 14px; font-weight: 600;">SAVE {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}%</span>
+        {% endif %}
+      </div>
+
+      <div class="product-form-wrapper" style="background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 32px;">
+        <form action="/cart/add" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+          
+          <div class="quantity-wrapper" style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 13px; font-weight: 600; text-transform: uppercase; margin-bottom: 12px;">Quantity</label>
+            <div style="display: flex; border: 1px solid #eee; width: fit-content; border-radius: 8px; overflow: hidden;">
+              <button type="button" style="width: 40px; height: 40px; border: none; background: #f9f9f9; cursor: pointer;">-</button>
+              <input type="number" name="quantity" value="1" min="1" style="width: 50px; text-align: center; border: none; font-size: 16px;">
+              <button type="button" style="width: 40px; height: 40px; border: none; background: #f9f9f9; cursor: pointer;">+</button>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; height: 56px; font-size: 16px; border-radius: 8px;">ADD TO CART</button>
+            <button type="button" class="btn" style="width: 100%; height: 56px; font-size: 16px; border-radius: 8px; background: #000; color: #fff;">BUY IT NOW</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Accordion Details -->
+      <div class="accordion">
+        <details class="accordion__item" open>
+          <summary class="accordion__header">
+            Ingredients
+            <span>+</span>
+          </summary>
+          <div class="accordion__content">
+            <p>Our formula uses clinically-backed natural ingredients including Ashwagandha, Shankhpushpi, and Brahmi.</p>
+          </div>
+        </details>
+        <details class="accordion__item">
+          <summary class="accordion__header">
+            Benefits
+            <span>+</span>
+          </summary>
+          <div class="accordion__content">
+            <p>Supports healthy weight management, promotes cardiovascular wellness, and enhances metabolic balance.</p>
+          </div>
+        </details>
+        <details class="accordion__item">
+          <summary class="accordion__header">
+            How To Use
+            <span>+</span>
+          </summary>
+          <div class="accordion__content">
+            <p>Take one scoop (10g) mixed with 200ml of water before meals, twice daily.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky Buy Bar -->
+<div id="StickyBuy" class="sticky-buy">
+  <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <img src="{{ product.featured_image | image_url: width: 100 }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+      <div>
+        <div style="font-weight: 600; font-size: 14px;">{{ product.title }}</div>
+        <div style="color: #d0021b; font-weight: 700;">{{ product.price | money }}</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" style="padding: 12px 32px; border-radius: 4px;">BUY NOW</button>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const sticky = document.getElementById('StickyBuy');
+    if (window.scrollY > 600) {
+      sticky.classList.add('is-active');
+    } else {
+      sticky.classList.remove('is-active');
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Main Product",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,552 @@
+{% doc %}
+  @prompt
+    generate a section to integrate meta objects here, Add the metaobject "How It Works?" from the data in this field
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-how-it-works-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+    margin: 0 auto;
+  }
+
+  .ai-how-it-works-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-how-it-works-header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin-bottom: {{ block.settings.header_spacing }}px;
+  }
+
+  .ai-how-it-works-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 {{ block.settings.title_margin }}px 0;
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    line-height: 1.2;
+  }
+
+  .ai-how-it-works-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    margin: 0;
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-weight: {{ block.settings.body_font.weight }};
+    line-height: 1.6;
+  }
+
+  .ai-how-it-works-steps-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+    margin-top: {{ block.settings.steps_margin_top }}px;
+  }
+
+  .ai-how-it-works-step-{{ ai_gen_id }} {
+    background-color: {{ block.settings.step_background_color }};
+    padding: {{ block.settings.step_padding }}px;
+    border-radius: {{ block.settings.step_border_radius }}px;
+    text-align: {{ block.settings.step_text_alignment }};
+    border: {{ block.settings.step_border_width }}px solid {{ block.settings.step_border_color }};
+  }
+
+  .ai-how-it-works-step-number-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: {{ block.settings.step_number_size }}px;
+    height: {{ block.settings.step_number_size }}px;
+    background-color: {{ block.settings.step_number_bg_color }};
+    color: {{ block.settings.step_number_text_color }};
+    border-radius: 50%;
+    font-size: {{ block.settings.step_number_font_size }}px;
+    font-weight: 700;
+    margin-bottom: {{ block.settings.step_number_margin }}px;
+  }
+
+  .ai-how-it-works-step-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.step_title_size }}px;
+    color: {{ block.settings.step_title_color }};
+    margin: 0 0 {{ block.settings.step_title_margin }}px 0;
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    line-height: 1.3;
+  }
+
+  .ai-how-it-works-step-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.step_description_size }}px;
+    color: {{ block.settings.step_description_color }};
+    margin: 0;
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-weight: {{ block.settings.body_font.weight }};
+    line-height: 1.6;
+  }
+
+  .ai-how-it-works-step-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    margin-bottom: {{ block.settings.image_margin }}px;
+  }
+
+  .ai-how-it-works-empty-state-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 2px dashed #ddd;
+  }
+
+  .ai-how-it-works-empty-state-{{ ai_gen_id }} p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-how-it-works-steps-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.columns_mobile }}, 1fr);
+    }
+
+    .ai-how-it-works-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.8);
+    }
+
+    .ai-how-it-works-step-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.step_title_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<div class="ai-how-it-works-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-how-it-works-container-{{ ai_gen_id }}">
+    {% if block.settings.how_it_works_metaobject != blank %}
+      {% assign metaobj = block.settings.how_it_works_metaobject %}
+      
+      <div class="ai-how-it-works-header-{{ ai_gen_id }}">
+        {% if metaobj.title != blank %}
+          <h2 class="ai-how-it-works-title-{{ ai_gen_id }}">{{ metaobj.title }}</h2>
+        {% endif %}
+        
+        {% if metaobj.description != blank %}
+          <div class="ai-how-it-works-description-{{ ai_gen_id }}">
+            {{ metaobj.description }}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if metaobj.steps != blank %}
+        <div class="ai-how-it-works-steps-{{ ai_gen_id }}">
+          {% for step in metaobj.steps %}
+            <div class="ai-how-it-works-step-{{ ai_gen_id }}">
+              {% if block.settings.show_step_numbers %}
+                <div class="ai-how-it-works-step-number-{{ ai_gen_id }}">
+                  {{ forloop.index }}
+                </div>
+              {% endif %}
+
+              {% if step.image != blank %}
+                <img
+                  src="{{ step.image | image_url: width: 600 }}"
+                  alt="{{ step.image.alt | escape }}"
+                  class="ai-how-it-works-step-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="600"
+                  height="auto"
+                >
+              {% endif %}
+
+              {% if step.title != blank %}
+                <h3 class="ai-how-it-works-step-title-{{ ai_gen_id }}">{{ step.title }}</h3>
+              {% endif %}
+
+              {% if step.description != blank %}
+                <div class="ai-how-it-works-step-description-{{ ai_gen_id }}">
+                  {{ step.description }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="ai-how-it-works-empty-state-{{ ai_gen_id }}">
+        <p>Next, select a "How It Works?" metaobject to display its content</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Metaobject"
+    },
+    {
+      "type": "metaobject",
+      "id": "how_it_works_metaobject",
+      "label": "How it works metaobject",
+      "metaobject_type": "how_it_works"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum content width",
+      "min": 600,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Grid gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Header spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "title_margin",
+      "label": "Title margin",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#1a2b23"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Steps"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_step_numbers",
+      "label": "Show step numbers",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "steps_margin_top",
+      "label": "Steps margin top",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "step_text_alignment",
+      "label": "Step text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "step_background_color",
+      "label": "Step background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "step_padding",
+      "label": "Step padding",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "step_border_radius",
+      "label": "Step border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "step_border_width",
+      "label": "Step border width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "step_border_color",
+      "label": "Step border color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "header",
+      "content": "Step numbers"
+    },
+    {
+      "type": "range",
+      "id": "step_number_size",
+      "label": "Number size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "step_number_font_size",
+      "label": "Number font size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "step_number_margin",
+      "label": "Number margin",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "step_number_bg_color",
+      "label": "Number background",
+      "default": "#1a2b23"
+    },
+    {
+      "type": "color",
+      "id": "step_number_text_color",
+      "label": "Number text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Step content"
+    },
+    {
+      "type": "range",
+      "id": "step_title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "step_title_margin",
+      "label": "Title margin",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "step_title_color",
+      "label": "Title color",
+      "default": "#1a2b23"
+    },
+    {
+      "type": "range",
+      "id": "step_description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "step_description_color",
+      "label": "Description color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_margin",
+      "label": "Image margin",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f4f1ea"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "playfair_display_n7"
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "inter_n4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "How it works"
+    }
+  ]
+}
+{% endschema %}

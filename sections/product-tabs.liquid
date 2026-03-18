@@ -1,0 +1,454 @@
+{% comment %}
+  Shopify Section: product-tabs.liquid
+  Premium implementation for Heart Lipid Lite with correct ingredients:
+  Omega-3, CoQ10, Garlic, Vitamin D3.
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Heart Lipid Lite Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_title",
+      "label": "Product Title",
+      "default": "Heart Lipid Lite"
+    },
+    {
+      "type": "text",
+      "id": "product_subtitle",
+      "label": "Subtitle",
+      "default": "For Complete Cardiometabolic Health & Triglyceride Support"
+    },
+    {
+      "type": "text",
+      "id": "product_price",
+      "label": "Price",
+      "default": "₹850"
+    },
+    {
+      "type": "text",
+      "id": "original_price",
+      "label": "Original Price",
+      "default": "₹999"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heart Lipid Lite Section"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+  .premium-product-wrapper {
+    background-color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    color: #2d3436;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  .product-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 80px;
+  }
+
+  @media (max-width: 900px) {
+    .product-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* Gallery */
+  .gallery-container {
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    padding: 40px;
+    position: sticky;
+    top: 40px;
+  }
+
+  .main-product-img {
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
+  }
+
+  .thumbnails {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    justify-content: center;
+  }
+
+  .thumb-item {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #fff;
+    padding: 5px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .thumb-item:hover {
+    transform: translateY(-3px);
+    border-color: #ffc107;
+  }
+
+  /* Information */
+  .product-header h1 {
+    font-size: 42px;
+    margin: 0 0 10px 0;
+    color: #111111;
+    font-weight: 700;
+  }
+
+  .product-header .subtitle {
+    font-size: 18px;
+    color: #636e72;
+    margin-bottom: 30px;
+  }
+
+  .price-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 35px;
+  }
+
+  .price-current {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111111;
+  }
+
+  .price-old {
+    font-size: 20px;
+    text-decoration: line-through;
+    color: #636e72;
+  }
+
+  .price-discount {
+    color: #2ecc71;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  /* Combo List */
+  .combo-box {
+    margin-bottom:35px;
+  }
+
+  .combo-box-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #636e72;
+  }
+
+  .pill-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s;
+  }
+
+  .pill-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  }
+
+  .pill-icon {
+    width: 40px;
+    height: 40px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .pill-text b { display: block; font-size: 15px; }
+  .pill-text span { font-size: 13px; color: #636e72; }
+
+  /* Freebie Box */
+  .premium-bonus {
+    background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+    border: 1px solid #c8e6c9;
+    padding: 10px 20px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  .bonus-label {
+    background: #2ecc71;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Buttons */
+  .action-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .btn-premium {
+    height: 55px;
+    border-radius: 15px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s, opacity 0.2s;
+    text-transform: uppercase;
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 2px solid #111111;
+    color: #111111;
+  }
+
+  .btn-solid {
+    background: #ffc107;
+    color: #111111;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  }
+
+  /* Tab System */
+  .tab-section {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 60px;
+  }
+
+  .tab-nav {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .tab-trigger {
+    padding: 15px 0;
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 18px;
+    color: #636e72;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .tab-trigger.is-active {
+    color: #111111;
+  }
+
+  .tab-trigger.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #111111;
+  }
+
+  .tab-panel {
+    display: none;
+    line-height: 1.8;
+    color: #2d3436;
+    font-size: 16px;
+  }
+
+  .tab-panel.is-active {
+    display: block;
+  }
+
+  /* Nutritional Table */
+  .nutri-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+
+  .nutri-table th {
+    text-align: left;
+    padding: 15px;
+    background: #f9f9f9;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .nutri-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+</style>
+
+<div class="premium-product-wrapper">
+  <div class="product-layout">
+    <!-- Gallery -->
+    <div class="gallery-container">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}" class="main-product-img">
+      {% else %}
+        <img src="https://images.unsplash.com/photo-1579722820308-d74e5719d38e?q=80&w=800" alt="{{ section.settings.product_title }}" class="main-product-img">
+      {% endif %}
+      <div class="thumbnails">
+        {% for image in product.images limit: 4 %}
+           <div class="thumb-item"><img src="{{ image | image_url: width: 100 }}" style="width:100%"></div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="info-container">
+      <div class="product-header">
+        <h1>{% if product.title != blank %}{{ product.title }}{% else %}{{ section.settings.product_title }}{% endif %}</h1>
+        <p class="subtitle">{{ section.settings.product_subtitle }}</p>
+      </div>
+
+      <div class="price-container">
+        <span class="price-current">{% if product.price != blank %}{{ product.price | money }}{% else %}{{ section.settings.product_price }}{% endif %}</span>
+        <span class="price-old">{{ section.settings.original_price }}</span>
+        <span class="price-discount">SAVE 15%</span>
+      </div>
+
+      <div class="combo-box">
+        <p class="combo-box-title">Ingredients in formulation</p>
+        
+        <div class="pill-item">
+          <div class="pill-icon">🐟</div>
+          <div class="pill-text">
+            <b>Omega-3 (Salmon Fish Oil)</b>
+            <span>1,000 mg EPA · Softgel</span>
+          </div>
+        </div>
+
+        <div class="pill-item">
+          <div class="pill-icon">⚡</div>
+          <div class="pill-text">
+            <b>CoQ10</b>
+            <span>100 mg · Capsule</span>
+          </div>
+        </div>
+
+        <div class="pill-item">
+          <div class="pill-icon">🧄</div>
+          <div class="pill-text">
+            <b>Garlic (Aged Extract)</b>
+            <span>600 mg · Capsule</span>
+          </div>
+        </div>
+
+        <div class="pill-item">
+          <div class="pill-icon">☀️</div>
+          <div class="pill-text">
+            <b>Vitamin D3</b>
+            <span>1,000 IU · Capsule</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="premium-bonus">
+        <div>
+          <p style="margin:0; font-weight:600;">Daily Health Tracker Included</p>
+          <p style="margin:0; font-size:14px; color:#636e72;">Optimized dosage plan for maximum results</p>
+        </div>
+        <span class="bonus-label">Freebie</span>
+      </div>
+
+      <form method="post" action="/cart/add" class="action-group">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <button type="submit" class="btn-premium btn-outline">Add to Cart</button>
+        <button type="button" class="btn-premium btn-solid">Buy Now</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tabs Section -->
+  <div class="tab-section">
+    <div class="tab-nav">
+      <button class="tab-trigger is-active" onclick="premiumSwitch(event, 'p-desc')">Description</button>
+      <button class="tab-trigger" onclick="premiumSwitch(event, 'p-benefits')">Key Benefits</button>
+      <button class="tab-trigger" onclick="premiumSwitch(event, 'p-nutri')">Nutritional Info</button>
+    </div>
+
+    <div id="p-desc" class="tab-panel is-active">
+      <p><b>{{ product.title | default: section.settings.product_title }}</b> is specifically formulated for adults (35–55yo) with a family history of rising lipids or borderline cholesterol challenges. Our "Lite" formulation focuses on essential cardiometabolic markers without overwhelming your system.</p>
+      <p>Target: Borderline lipids, cardiovascular family history, and general lipid maintenance. (60 Days Supply).</p>
+      <div style="margin-top: 20px;">
+        {{ product.description }}
+      </div>
+    </div>
+
+    <div id="p-benefits" class="tab-panel">
+      <p>Experience the 4-in-1 support for a healthier cardiovascular profile:</p>
+      <ul>
+        <li><b>Lipid Balance:</b> EPA-rich Omega-3 helps maintain healthy triglyceride levels.</li>
+        <li><b>Cellular Energy:</b> CoQ10 provides vital energy to the heart muscle.</li>
+        <li><b>Vascular Health:</b> Aged Garlic support healthy blood pressure and flow.</li>
+        <li><b>Immune/Metabolic Sync:</b> Vitamin D3 ensures your metabolic markers stay in range.</li>
+      </ul>
+    </div>
+
+    <div id="p-nutri" class="tab-panel">
+      <table class="nutri-table">
+        <thead>
+          <tr>
+            <th>Ingredient</th>
+            <th>Daily Dose</th>
+            <th>Form</th>
+            <th>Rationale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Omega-3</td><td>1,000 mg EPA</td><td>Softgel</td><td>Triglyceride lowering</td></tr>
+          <tr><td>CoQ10</td><td>100 mg</td><td>Capsule</td><td>Endothelial support</td></tr>
+          <tr><td>Garlic</td><td>600 mg</td><td>Capsule</td><td>LDL/BP reduction</td></tr>
+          <tr><td>Vitamin D3</td><td>1,000 IU</td><td>Capsule</td><td>Risk reduction</td></tr>
+        </tbody>
+      </table>
+      <p><i>Format: 2 softgels + 2 capsules daily.</i></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function premiumSwitch(e, panelId) {
+    const panels = document.querySelectorAll('.tab-panel');
+    const triggers = document.querySelectorAll('.tab-trigger');
+    
+    panels.forEach(p => p.classList.remove('is-active'));
+    triggers.forEach(t => t.classList.remove('is-active'));
+    
+    document.getElementById(panelId).classList.add('is-active');
+    e.currentTarget.classList.add('is-active');
+  }
+</script>

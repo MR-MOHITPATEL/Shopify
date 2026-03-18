@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-tabs",
+      "settings": {
+        "product_title": "Heart Lipid Lite",
+        "product_subtitle": "For Complete Cardiometabolic Health & Triglyceride Support",
+        "product_price": "₹850",
+        "original_price": "₹999"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
