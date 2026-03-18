@@ -3,9 +3,14 @@
     "main": {
       "type": "about-content",
       "settings": {}
+    },
+    "authority": {
+      "type": "about-authority",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "authority"
   ]
 }
