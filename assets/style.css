@@ -678,10 +678,10 @@ details[open] summary::after {
 }
 /* Structural Copy (Jaadu Diet) */
 .footer {
-  background-color: #f4f4f4;
-  padding: var(--spacing-xxl) 0;
-  color: var(--color-primary);
-  border-top: 1px solid var(--color-border);
+  background-color: #fff;
+  padding: 80px 0;
+  color: #1a2b23;
+  border-top: 1px solid #eee;
 }
 
 .footer__grid {
