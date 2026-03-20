@@ -143,7 +143,8 @@
 <script>
   (function() {
     let currentSlide = 0;
-    const slides = document.querySelectorAll('#BenefitsSlides-{{ section.id }} .benefits-slide');
+    const container = document.querySelector('.benefits-carousel__section');
+    const slides = container.querySelectorAll('.benefits-slide');
     if (slides.length === 0) return;
 
     function goToSlide(index) {
@@ -152,11 +153,11 @@
       slides[currentSlide].classList.add('is-active');
     }
 
-    document.querySelectorAll('#BenefitsSlides-{{ section.id }} .next-benefit').forEach(btn => {
+    container.querySelectorAll('.next-benefit').forEach(btn => {
       btn.addEventListener('click', () => goToSlide(currentSlide + 1));
     });
 
-    document.querySelectorAll('#BenefitsSlides-{{ section.id }} .prev-benefit').forEach(btn => {
+    container.querySelectorAll('.prev-benefit').forEach(btn => {
       btn.addEventListener('click', () => goToSlide(currentSlide - 1));
     });
   })();

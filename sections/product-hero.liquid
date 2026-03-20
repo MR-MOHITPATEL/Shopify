@@ -259,6 +259,43 @@
 </section>
 
 <script>
+  // Product Gallery Carousel
+  (function() {
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+    const thumbs = Array.from(document.querySelectorAll('.carousel-thumbnail'));
+    
+    let currentSlide = 0;
+
+    function updateCarousel(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      
+      track.style.transform = `translateX(-${index * 100}%)`;
+      
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      thumbs.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
+      
+      currentSlide = index;
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => updateCarousel(currentSlide + 1));
+      prevBtn.addEventListener('click', () => updateCarousel(currentSlide - 1));
+    }
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener('click', () => updateCarousel(i));
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => updateCarousel(i));
+    });
+  })();
+
   function updateQty(amount) {
     const input = document.getElementById('Quantity-{{ product.id }}');
     let value = parseInt(input.value) || 1;
@@ -300,7 +337,7 @@
         const bubble = document.querySelector('.cart-count-bubble');
         if (bubble) {
           bubble.innerText = cart.item_count;
-          bubble.style.display = 'flex';
+          bubble.style.display = 'flex'; // Ensure it's shown even if it was hidden
         }
       }
 
