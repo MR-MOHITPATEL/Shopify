@@ -1,0 +1,211 @@
+<!-- sections/what-is-daily-salad.liquid -->
+<style>
+  .benefits-carousel-section {
+    padding: 80px 0;
+    background: #fff;
+    overflow: hidden;
+  }
+  .benefits-carousel__header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+  }
+  .benefits-carousel__title {
+    font-size: 48px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: #1a2b23;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .benefits-carousel__subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+  }
+  .benefits-carousel__container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .benefits-slide {
+    display: none;
+    align-items: center;
+    gap: 80px;
+    animation: fadeIn 0.5s ease;
+  }
+  .benefits-slide.is-active {
+    display: flex;
+  }
+  .benefits-slide__image {
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  }
+  .benefits-slide__image img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .benefits-slide__content {
+    flex: 1;
+  }
+  .benefits-slide__heading {
+    font-size: 56px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: #1a2b23;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+  .benefits-slide__text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 40px;
+  }
+  .benefits-carousel__nav {
+    display: flex;
+    gap: 16px;
+  }
+  .carousel-nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+  }
+  .carousel-nav-btn:hover {
+    background: #1a2b23;
+    color: #fff;
+    border-color: #1a2b23;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .benefits-carousel__title { font-size: 32px; }
+    .benefits-slide { flex-direction: column; gap: 40px; }
+    .benefits-slide__heading { font-size: 40px; }
+  }
+</style>
+
+<section class="benefits-carousel-section">
+  <div class="container">
+    <div class="benefits-carousel__header">
+      <h2 class="benefits-carousel__title">{{ section.settings.title }}</h2>
+      <p class="benefits-carousel__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="benefits-carousel__container">
+      <div id="BenefitsSlides-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="benefits-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+            <div class="benefits-slide__image">
+              {% if block.settings.image != blank %}
+                <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title }}">
+              {% else %}
+                <div style="aspect-ratio: 16/11; background: #eee;"></div>
+              {% endif %}
+            </div>
+            <div class="benefits-slide__content">
+              <h3 class="benefits-slide__heading">{{ block.settings.title }}</h3>
+              <div class="benefits-slide__text">{{ block.settings.text }}</div>
+              <div class="benefits-carousel__nav">
+                <button class="carousel-nav-btn prev-benefit">←</button>
+                <button class="carousel-nav-btn next-benefit">→</button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('#BenefitsSlides-{{ section.id }} .benefits-slide');
+    if (slides.length === 0) return;
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('is-active');
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('is-active');
+    }
+
+    document.querySelectorAll('#BenefitsSlides-{{ section.id }} .next-benefit').forEach(btn => {
+      btn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    });
+
+    document.querySelectorAll('#BenefitsSlides-{{ section.id }} .prev-benefit').forEach(btn => {
+      btn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "What is Daily Salad Mix",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What is Daily Salad Mix?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Daily Salad Mix is a ready-to-mix, fiber supplement powder designed to give you the benefits of a filling, healthy salad in a quick, convenient form."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Benefit Title",
+          "default": "Quick & Convenient"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Benefit Description",
+          "default": "<p>Just mix with water before meals—no prep, no cooking, no hassle. Makes it easier to eat less without feeling deprived.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "What is Daily Salad Mix",
+      "blocks": [
+        { "type": "benefit", "settings": { "title": "Quick & Convenient" } },
+        { "type": "benefit", "settings": { "title": "Natural Fiber Blend" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
