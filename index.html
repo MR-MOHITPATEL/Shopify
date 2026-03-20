@@ -98,9 +98,11 @@
         }
 
         function addToCartMockup() {
-            const bubble = document.querySelector('.cart-count-bubble');
-            let count = parseInt(bubble.innerText);
-            bubble.innerText = count + 1;
+            const bubble = document.getElementById('CartCount');
+            let count = parseInt(bubble.innerText) || 0;
+            count++;
+            bubble.innerText = count;
+            bubble.style.display = 'flex';
             
             // Visual feedback toast
             const toast = document.createElement('div');
@@ -117,6 +119,27 @@
             toast.style.fontFamily = 'Outfit, sans-serif';
             document.body.appendChild(toast);
             setTimeout(() => toast.remove(), 2000);
+        }
+
+        // Product Carousel Logic
+        let currentProductSlide = 0;
+        function moveProductSlide(dir) {
+            const track = document.getElementById('productTrack');
+            const dots = document.querySelectorAll('.carousel-dots .dot');
+            currentProductSlide = (currentProductSlide + dir + 2) % 2; // Assuming 2 slides
+            track.style.transform = `translateX(-${currentProductSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.style.background = i === currentProductSlide ? '#1a2b23' : '#ddd';
+            });
+        }
+        function setProductSlide(index) {
+            const track = document.getElementById('productTrack');
+            const dots = document.querySelectorAll('.carousel-dots .dot');
+            currentProductSlide = index;
+            track.style.transform = `translateX(-${currentProductSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.style.background = i === currentProductSlide ? '#1a2b23' : '#ddd';
+            });
         }
     </script>
     </header>
@@ -138,7 +161,18 @@
         <section class="product-page">
             <div class="container grid grid-cols-2 gap-xl" style="margin-top: 80px;">
                 <div class="product-gallery">
-                    <img src="https://jaadudiet.com/cdn/shop/files/Product_Image_Daily_Salad_Mix.png?v=1708418044&width=1200" alt="Product" class="product-main-image">
+                    <div class="product-carousel" style="position: relative; overflow: hidden; border-radius: 20px;">
+                        <div class="carousel-track" id="productTrack" style="display: flex; transition: transform 0.3s ease;">
+                            <div class="carousel-slide" style="flex: 0 0 100%;"><img src="assets/salad_mix_woman_benefits.png" alt="Product" style="width: 100%;"></div>
+                            <div class="carousel-slide" style="flex: 0 0 100%;"><img src="assets/salad_mix_ingredients_fiber.png" alt="Product 2" style="width: 100%;"></div>
+                        </div>
+                        <button class="carousel-arrow prev" onclick="moveProductSlide(-1)" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 5;">←</button>
+                        <button class="carousel-arrow next" onclick="moveProductSlide(1)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 5;">→</button>
+                    </div>
+                    <div class="carousel-dots" style="display: flex; justify-content: center; gap: 8px; margin-top: 16px;">
+                        <span class="dot active" onclick="setProductSlide(0)" style="width: 8px; height: 8px; border-radius: 50%; background: #ddd; cursor: pointer;"></span>
+                        <span class="dot" onclick="setProductSlide(1)" style="width: 8px; height: 8px; border-radius: 50%; background: #ddd; cursor: pointer;"></span>
+                    </div>
                 </div>
                 <div class="product-meta">
                     <div style="text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px; color: #999;">Jaadu Diet</div>
