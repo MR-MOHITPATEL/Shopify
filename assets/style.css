@@ -41,23 +41,24 @@
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  color: var(--text-dark);
-  line-height: 1.6;
-  background-color: var(--bg-light);
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, .brand-font {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 600;
-  color: #1a1a1a;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -244,6 +245,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cart-count-bubble:empty,
+.cart-count-bubble[data-count="0"] {
+  display: none !important;
 }
 
 /* Mobile Menu Drawer */

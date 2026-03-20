@@ -234,8 +234,8 @@
           </div>
           
           <div class="button-group">
-            <button type="button" class="buy-now-btn" onclick="buyNow()" style="background: var(--primary-color); color: #fff; border: none;">Buy it now</button>
-            <button type="button" class="atc-btn" onclick="addToCartAjax()" style="border: 1px solid #ddd; background: #fff; color: var(--primary-color);">ADD TO CART</button>
+            <button type="button" class="buy-now-btn" onclick="buyNow()" style="background: #ffc107; color: #000; border: none;">BUY IT NOW</button>
+            <button type="button" class="atc-btn" onclick="addToCartAjax()" style="border: 1px solid #ddd; background: #fff; color: #1b4332;">ADD TO CART</button>
           </div>
         </div>
 
@@ -259,40 +259,47 @@
 </section>
 
 <script>
-  // Product Gallery Carousel
+  // Product Carousel Logic
   (function() {
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-    const nextBtn = document.querySelector('.carousel-arrow.next');
-    const prevBtn = document.querySelector('.carousel-arrow.prev');
-    const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+    const carousel = document.querySelector('.product-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextBtn = carousel.querySelector('.carousel-arrow.next');
+    const prevBtn = carousel.querySelector('.carousel-arrow.prev');
+    const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
     const thumbs = Array.from(document.querySelectorAll('.carousel-thumbnail'));
-    
-    let currentSlide = 0;
+
+    let currentIndex = 0;
 
     function updateCarousel(index) {
-      if (index < 0) index = slides.length - 1;
-      if (index >= slides.length) index = 0;
-      
       track.style.transform = `translateX(-${index * 100}%)`;
-      
       dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
       thumbs.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
-      
-      currentSlide = index;
+      currentIndex = index;
     }
 
     if (nextBtn) {
-      nextBtn.addEventListener('click', () => updateCarousel(currentSlide + 1));
-      prevBtn.addEventListener('click', () => updateCarousel(currentSlide - 1));
+      nextBtn.addEventListener('click', () => {
+        let nextIndex = (currentIndex + 1) % slides.length;
+        updateCarousel(nextIndex);
+      });
     }
 
-    thumbs.forEach((thumb, i) => {
-      thumb.addEventListener('click', () => updateCarousel(i));
-    });
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel(prevIndex);
+      });
+    }
 
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => updateCarousel(i));
+    });
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener('click', () => updateCarousel(i));
     });
   })();
 
@@ -334,10 +341,15 @@
         // Update bubble
         const cartRes = await fetch('/cart.js');
         const cart = await cartRes.json();
-        const bubble = document.querySelector('.cart-count-bubble');
+        const bubble = document.getElementById('CartCount');
         if (bubble) {
           bubble.innerText = cart.item_count;
-          bubble.style.display = 'flex'; // Ensure it's shown even if it was hidden
+          bubble.setAttribute('data-count', cart.item_count);
+          if (cart.item_count > 0) {
+            bubble.style.display = 'flex';
+          } else {
+            bubble.style.display = 'none';
+          }
         }
       }
 

@@ -61,6 +61,12 @@
                 <div class="header__icon account-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
+                <div class="header__icon cart-icon">
+                    <div style="position: relative;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+                        <span class="cart-count-bubble">1</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -148,108 +154,50 @@
                             <summary class="accordion__header">Ingredients <span>+</span></summary>
                             <div class="accordion__content" style="padding: 10px 0;"><p>Natural fiber blend with green tea, fenugreek, and apple cider.</p></div>
                         </details>
-    <main>
-        <!-- HERO SECTION -->
-        <section class="hero-section">
-            <div class="container hero-grid">
-                <div class="hero-content">
-                    <span style="color: var(--primary-color); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 14px; margin-bottom: 16px; display: block;">WELLNESS REIMAGINED</span>
-                    <h1 class="hero-title">Precautionary Cardiovascular Support for Your Daily Routine.</h1>
-                    <p class="hero-subtitle">We are a precautionary nutraceutical company dedicated to your long-term wellness. Our formulations are designed to safely support and maintain your cardiovascular health, providing the daily assistance your body needs without the extremes of a pharmaceutical approach.</p>
-                    <div class="hero-actions">
-                        <a href="#products" class="btn btn-primary">Shop the Science</a>
+                        <details class="accordion__item">
+                            <summary class="accordion__header">Benefits <span>+</span></summary>
+                            <div class="accordion__content" style="padding: 10px 0;"><p>Sustainable weight loss and metabolic control.</p></div>
+                        </details>
                     </div>
-                </div>
-                <div class="hero-image">
-                    <div class="hero-image-placeholder">
-                        <img src="assets/lifestyle_office_routine.png" alt="evid1labs Lifestyle" style="width: 100%; border-radius: 32px; box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
-                    </div>
+
+                    <button class="btn btn-primary" onclick="addToCartMockup()" style="width: 100%; height: 56px; margin-top: 32px; border-radius: 8px;">ADD TO CART</button>
                 </div>
             </div>
         </section>
 
-        <!-- PRODUCTS SECTION -->
-        <section id="products" class="products-section">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 60px;">
-                    <h2 style="font-size: 40px;">Our Evidence-Based Formulations</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 grid-cols-2 gap-xl">
-                    <!-- Product 1 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/heart_lipid_lite_placeholder.png" alt="Heart Lipid Lite">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Heart Lipid Lite</h3>
-                            <p class="product-p" style="color: #666; margin-bottom: 16px;">Precautionary daily supplement blending Omega-3 Salmon Fish Oil, CoQ10, Aged Garlic Extract, and Vitamin D3. 60-day supply (2 softgels, 2 capsules daily).</p>
-                            <div class="product-price">₹850.00</div>
-                            <button class="btn btn-primary" style="width: 100%; border-radius: 8px;">Buy it now</button>
-                        </div>
-                    </div>
-
-                    <!-- Product 2 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="assets/product_breakdown_sachet.png" alt="BP Balance Daily">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">BP Balance Daily</h3>
-                            <p class="product-p" style="color: #666; margin-bottom: 16px;">Precautionary daily supplement blending Magnesium, Potassium, Beetroot Nitrate, and Ashwagandha KSM-66. 30-day supply (1 powder sachet, 2 capsules daily).</p>
-                            <div class="product-price">₹950.00</div>
-                            <button class="btn btn-primary" style="width: 100%; border-radius: 8px;">Buy it now</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AUTHORITY SECTION -->
-        <section class="authority-section" style="background: var(--bg-soft); padding: 100px 0;">
-            <div class="container grid grid-cols-1 grid-cols-2 gap-xl align-center">
-                <div class="authority-image">
-                    <img src="assets/dr_paramjeet_singh.png" alt="Dr. Paramjeet Singh Maras" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
-                </div>
-                <div class="authority-content">
-                    <h2 style="font-size: 44px; margin-bottom: 24px;">Why Trust evid1labs?</h2>
-                    <p style="font-size: 18px; color: #444; margin-bottom: 32px; line-height: 1.8;">Our preventative approach to nutraceuticals is guided by Dr. Paramjeet Singh Maras. Rather than focusing on reversing conditions—which falls outside the scope of daily supplementation—we focus strictly on supporting and maintaining your active lifestyle. Every evid1labs product is developed with safety, precaution, and strictly adheres to NMC guidelines to ensure you receive reliable, evidence-based support.</p>
-                    <div style="font-family: 'Outfit'; font-weight: 700; color: var(--primary-color);">Dr. Paramjeet Singh Maras</div>
-                    <div style="font-size: 14px; color: #888;">Lead Cardiologist & Advisor</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CORE BENEFITS -->
+        <!-- WHAT IS DAILY SALAD MIX (BENEFITS CAROUSEL) -->
         <section class="benefits-carousel-section">
             <div class="container">
                 <div class="benefits-carousel__header">
-                    <h2 class="benefits-carousel__title">What is the BP Balance Daily Routine?</h2>
-                    <p class="benefits-carousel__subtitle">To get a full, effective dose of essential minerals like Potassium, a standard capsule simply isn't enough. That’s why we created a hybrid routine.</p>
+                    <h2 class="benefits-carousel__title">What is Daily Salad Mix?</h2>
+                    <p class="benefits-carousel__subtitle">Daily Salad Mix is a ready-to-mix, fiber supplement powder designed to give you the benefits of a filling, healthy salad in a quick, convenient form.</p>
                 </div>
 
                 <div class="benefits-carousel__container">
+                    <!-- Navigation Arrows moved outside slides -->
                     <button class="carousel-nav-btn prev-benefit" style="position: absolute; left: -60px; top: 50%; transform: translateY(-50%); z-index: 10;">←</button>
                     <button class="carousel-nav-btn next-benefit" style="position: absolute; right: -60px; top: 50%; transform: translateY(-50%); z-index: 10;">→</button>
                     
                     <div class="benefits-carousel__slides" id="benefitsSlides">
+                        <!-- Slide 1 -->
                         <div class="benefits-slide is-active">
                             <div class="benefits-slide__image">
-                                <img src="assets/product_breakdown_sachet.png" alt="Potent Capsules">
+                                <img src="assets/salad_mix_woman_benefits.png" alt="Quick & Convenient">
                             </div>
                             <div class="benefits-slide__content">
-                                <h3 class="benefits-slide__heading">The Hybrid <br>Routine</h3>
-                                <p class="benefits-slide__description">You get the potent, concentrated benefits of Ashwagandha and Beetroot in two easy capsules, paired with a refreshing, drinkable powder sachet.</p>
+                                <h3 class="benefits-slide__heading">Quick & <br>Convenient</h3>
+                                <p class="benefits-slide__description">Just mix with water before meals—no prep, no cooking, no hassle. Makes it easier to eat less without feeling deprived.</p>
                             </div>
                         </div>
 
+                        <!-- Slide 2 -->
                         <div class="benefits-slide">
                             <div class="benefits-slide__image">
-                                <img src="assets/lifestyle_office_routine.png" alt="Daily Habit">
+                                <img src="assets/salad_mix_ingredients_fiber.png" alt="Natural Fiber Blend">
                             </div>
                             <div class="benefits-slide__content">
-                                <h3 class="benefits-slide__heading">Complete <br>Regimen</h3>
-                                <p class="benefits-slide__description">It delivers maximum-absorption Magnesium and Potassium. It’s a complete, supportive cardiovascular regimen in one daily habit.</p>
+                                <h3 class="benefits-slide__heading">Natural <br>Fiber Blend</h3>
+                                <p class="benefits-slide__description">Combines soluble and insoluble fibers (resistant dextrin, inulin, and psyllium) that swell in your stomach to create lasting fullness.</p>
                             </div>
                         </div>
                     </div>
@@ -257,78 +205,59 @@
             </div>
         </section>
 
-        <!-- HYBRID DETAIL / COMPARISON -->
-        <section style="padding: 100px 0; background: #fff;">
-            <div class="container">
-                <div class="grid grid-cols-1 grid-cols-2 gap-xl">
-                    <div style="background: var(--bg-soft); padding: 48px; border-radius: 24px;">
-                        <h2 style="margin-bottom: 24px;">evid1labs Routine</h2>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 16px; display: flex; gap: 12px; align-items: center;">✅ Streamlined, cost-effective daily routine</li>
-                            <li style="margin-bottom: 16px; display: flex; gap: 12px; align-items: center;">✅ Exact, clinical doses of targeted ingredients</li>
-                            <li style="margin-bottom: 16px; display: flex; gap: 12px; align-items: center;">✅ Integrated stress & cardiovascular support</li>
-                        </ul>
-                    </div>
-                    <div style="padding: 48px; border-radius: 24px; border: 2px dashed #ddd;">
-                        <h2 style="margin-bottom: 24px; color: #999;">DIY Supplementation</h2>
-                        <ul style="list-style: none; padding: 0; color: #888;">
-                            <li style="margin-bottom: 16px;">❌ Highly expensive separate ingredients</li>
-                            <li style="margin-bottom: 16px;">❌ Inconvenient to mix and measure daily</li>
-                            <li style="margin-bottom: 16px;">❌ Often leaves you guessing on dosage</li>
-                        </ul>
-                    </div>
+        <!-- WHY TRUST US SECTION -->
+        <section class="doctor-section" style="background-color: #fff; padding: 100px 0;">
+            <div class="container grid grid-cols-2 gap-xl items-center">
+                <div class="doctor-image-wrapper">
+                    <img src="https://jaadudiet.com/cdn/shop/files/Why_Trust_Us.png?v=1708418044&width=1000" alt="Expert" class="doctor-image" style="box-shadow: 20px 20px 0px #eef6fc;">
+                </div>
+                <div class="doctor-info">
+                    <h2 style="font-size: 48px; margin-bottom: 24px;">Why Trust Us?</h2>
+                    <div style="font-size: 24px; font-weight: 700; color: #3b4260; margin-bottom: 16px;">Dr. Bimal Chhajer</div>
+                    <p style="font-size: 18px; line-height: 1.6; color: #666; margin-bottom: 32px;">Over three decades of medical experience guided by lifestyle-first approach.</p>
                 </div>
             </div>
         </section>
+    </div>
 
-        <!-- FAQ SECTION -->
-        <section class="faq-section" style="padding-bottom: 100px;">
-            <div class="container">
-                <h2 style="text-align: center; font-size: 40px; margin-bottom: 60px;">Formulated for Precaution</h2>
-                <div class="faq-grid" style="max-width: 800px; margin: 0 auto;">
-                    <details class="faq-item" open>
-                        <summary class="faq-question">1. How do I take Heart Lipid Lite? <span class="faq-icon">+</span></summary>
-                        <div class="faq-answer">The recommended daily format is 2 softgels and 2 capsules. Take them with water as part of your daily routine.</div>
-                    </details>
-                    <details class="faq-item">
-                        <summary class="faq-question">3. Will Heart Lipid Lite cure my high cholesterol? <span class="faq-icon">+</span></summary>
-                        <div class="faq-answer">No. This product is formulated to safely support and maintain cardiovascular wellness already within a normal range. It is a precautionary supplement and is not intended to diagnose, treat, cure, or prevent any disease.</div>
-                    </details>
-                    <details class="faq-item">
-                        <summary class="faq-question">4. How do I take BP Balance Daily? <span class="faq-icon">+</span></summary>
-                        <div class="faq-answer">The daily format consists of 2 capsules and 1 powder sachet. Mix the powder into water and take it alongside the capsules.</div>
-                    </details>
-                    <details class="faq-item">
-                        <summary class="faq-question">6. Why does BP Balance Daily include a powder sachet? <span class="faq-icon">+</span></summary>
-                        <div class="faq-answer">To effectively deliver a full 1,000 mg dose of Potassium, it is formatted as a drinkable powder, while the remaining ingredients like Ashwagandha and Beetroot nitrate are delivered via capsule.</div>
-                    </details>
-                </div>
-            </div>
-        </section>
-    </main>
-
+    <!-- FOOTER -->
     <footer class="footer">
-        <div class="container grid footer__grid">
+        <div class="container footer__grid">
             <div class="footer__column">
-                <div style="font-family: 'Outfit'; font-weight: 700; font-size: 26px; margin-bottom: 24px; color: var(--primary-color);">evid1labs</div>
+                <div style="font-family: 'Outfit'; font-weight: 700; font-size: 26px; margin-bottom: 24px; color: #1a2b23;">evid1labs</div>
                 <div class="footer__contact-info">
                     <p>SR. No. 83 & 84, Regency Cosmos,<br>Flat No. A-1-904, Baner Gaon,<br>Haveli, Pune, Maharashtra 411045,<br>India</p>
+                    <p style="margin-top: 20px;">+91 7400359700</p>
                     <p><a href="mailto:wecare@evid1labs.com" class="footer__link">wecare@evid1labs.com</a></p>
                 </div>
             </div>
+
             <div class="footer__column">
                 <h4 class="footer__column-title">Policies</h4>
-                <ul class="footer__link-list" style="list-style: none; padding: 0;">
+                <ul class="footer__link-list">
                     <li class="footer__link-item"><a href="#" class="footer__link">Privacy Policy</a></li>
                     <li class="footer__link-item"><a href="#" class="footer__link">Refunds Policy</a></li>
                     <li class="footer__link-item"><a href="#" class="footer__link">Shipping Policy</a></li>
-                    <li class="footer__link-item"><a href="#" class="footer__link">About Us</a></li>
+                    <li class="footer__link-item"><a href="about-preview.html" class="footer__link">About Us</a></li>
                     <li class="footer__link-item"><a href="#" class="footer__link">Terms & Condition</a></li>
                 </ul>
             </div>
+
             <div class="footer__column">
-                <div class="footer__disclaimer" style="margin-top: 40px; font-size: 13px; line-height: 1.6; color: #888; font-style: italic;">
-                    evid1labs is a brand owned and operated<br>by Purple Cow Health Sciences Private Limited. © 2026
+                <div class="footer__disclaimer">
+                    evid1labs is a brand owned and operated<br>by Zenjeevani Healthtech Private Limited
+                </div>
+            </div>
+
+            <div class="footer__column">
+                <h4 class="footer__column-title">Follow Us</h4>
+                <div class="footer__socials">
+                    <a href="#" class="footer__social-icon" style="color: #000;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="footer__social-icon" style="color: #000; margin-left: 15px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>

@@ -38,9 +38,8 @@
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 12px;">
-              <button type="submit" name="add" class="product-form__submit btn btn-primary" style="width: 100%; margin-top: 20px;">
-                <span>Buy it now</span>
-              </button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; height: 56px; font-size: 16px; border-radius: 8px;">ADD TO CART</button>
+            <button type="button" class="btn" onclick="buyItNow()" style="width: 100%; height: 56px; font-size: 16px; border-radius: 8px; background: #000; color: #fff;">BUY IT NOW</button>
           </div>
         </form>
       </div>
@@ -127,7 +126,7 @@
         const bubble = document.querySelector('.cart-count-bubble');
         if (bubble) {
           bubble.innerText = cart.item_count;
-          bubble.style.display = 'flex'; // Ensure visible even if it was hidden
+          bubble.style.display = 'flex'; // Ensure visible
         }
       });
 

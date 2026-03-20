@@ -35,6 +35,12 @@
       <a href="{{ routes.account_login_url }}" class="header__icon account-icon" aria-label="Account">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </a>
+      <a href="{{ routes.cart_url }}" class="header__icon cart-icon" aria-label="Cart">
+        <div style="position: relative;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+          <span id="CartCount" class="cart-count-bubble" style="{% if cart.item_count == 0 %}display:none;{% endif %}">{{ cart.item_count }}</span>
+        </div>
+      </a>
     </div>
   </div>
 
