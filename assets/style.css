@@ -163,23 +163,44 @@ img {
   width: 100%;
 }
 
-.header__left, .header__right {
+.header__left {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
   flex: 1;
 }
 
 .header__center {
-  flex: 0 0 364px; /* User specified width for central element/breakpoint context */
+  flex: 2;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.header__nav {
+  display: flex;
+  gap: 32px;
+}
+
+.header__nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a2b23;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.header__nav-link:hover {
+  opacity: 0.7;
+}
+
 .header__right {
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: 20px;
+  flex: 1;
 }
 
 .nav-links {
@@ -678,10 +699,10 @@ details[open] summary::after {
 }
 /* Structural Copy (Jaadu Diet) */
 .footer {
-  background-color: #fff;
+  background-color: #fbfbf1; /* beige */
   padding: 80px 0;
   color: #1a2b23;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #e5e5d1;
 }
 
 .footer__grid {

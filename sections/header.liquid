@@ -1,21 +1,22 @@
 <header class="header">
   <div class="container header__wrapper">
     <div class="header__left">
-      <button class="header__icon menu-toggle" aria-label="Menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-      <a href="{{ routes.search_url }}" class="header__icon" aria-label="Search">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="5"/><path d="m15.5 15.5 4.5 4.5"/></svg>
-      </a>
-    </div>
-
-    <div class="header__center">
       <a href="{{ routes.root_url }}" class="header__logo">
         <span style="font-family: 'Outfit'; font-weight: 700; font-size: 28px; color: #1a2b23;">evid1labs</span>
       </a>
     </div>
 
+    <div class="header__center">
+      <nav class="header__nav">
+        <a href="{{ routes.root_url }}" class="header__nav-link">Home</a>
+        <a href="/pages/about-us" class="header__nav-link">About Us</a>
+      </nav>
+    </div>
+
     <div class="header__right">
+      <a href="{{ routes.search_url }}" class="header__icon" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="5"/><path d="m15.5 15.5 4.5 4.5"/></svg>
+      </a>
       <a href="{{ routes.account_login_url }}" class="header__icon" aria-label="Account">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </a>
