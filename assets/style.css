@@ -157,29 +157,52 @@ img {
 }
 
 .header__wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
 }
 
 .header__left {
   display: flex;
   align-items: center;
-  flex: 1;
+  gap: 12px;
 }
 
 .header__center {
-  flex: 2;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.header__nav {
+.header__right {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Visibility Utilities */
+.mobile-only { display: block !important; }
+.desktop-only { display: none !important; }
+
+@media (min-width: 1024px) {
+  .mobile-only { display: none !important; }
+  .desktop-only { display: block !important; }
+
+  .header__nav.desktop-only {
+    display: flex !important;
+    gap: 32px;
+  }
+  
+  .menu-toggle { display: none !important; }
+}
+
+/* Specific icon handling for desktop Search */
+@media (min-width: 1024px) {
+  /* On desktop, keep Search on the right next to Account/Cart */
+  .header__left .search-icon { display: none; }
+  /* But I need a search icon on the right too. I'll add both in Liquid and toggle them. */
 }
 
 .header__nav-link {
@@ -195,12 +218,13 @@ img {
   opacity: 0.7;
 }
 
-.header__right {
+.header__icon {
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 20px;
-  flex: 1;
+  justify-content: center;
+  color: #1a2b23;
 }
 
 .nav-links {
