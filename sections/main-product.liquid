@@ -101,6 +101,34 @@
       sticky.classList.remove('is-active');
     }
   });
+
+  // AJAX Add to Cart
+  document.querySelector('form[action="/cart/add"]').addEventListener('submit', function(e) {
+    e.preventDefault();
+    fetch('/cart/add.js', {
+      method: 'POST',
+      body: new FormData(this)
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Update cart count bubble
+      fetch('/cart.js')
+      .then(res => res.json())
+      .then(cart => {
+        const bubble = document.querySelector('.cart-count-bubble');
+        if (bubble) {
+          bubble.innerText = cart.item_count;
+        } else {
+          // If bubble doesn't exist, create it (simplified)
+          location.reload(); 
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      this.submit(); // Fallback to standard submit
+    });
+  });
 </script>
 
 {% schema %}

@@ -91,12 +91,18 @@
         </div>
 
         <script>
-            function toggleMobileMenu() {
-                const drawer = document.getElementById('MobileMenuDrawer');
-                drawer.classList.toggle('is-open');
-                document.body.classList.toggle('overflow-hidden');
-            }
-        </script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('MobileMenuDrawer');
+            drawer.classList.toggle('is-open');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        function addToCartMockup() {
+            const bubble = document.querySelector('.cart-count-bubble');
+            let count = parseInt(bubble.innerText);
+            bubble.innerText = count + 1;
+        }
+    </script>
     </header>
 
     <div class="page-wrapper">
@@ -138,7 +144,7 @@
                         </details>
                     </div>
 
-                    <button class="btn btn-primary" style="width: 100%; height: 56px; margin-top: 32px; border-radius: 8px;">ADD TO CART</button>
+                    <button class="btn btn-primary" onclick="addToCartMockup()" style="width: 100%; height: 56px; margin-top: 32px; border-radius: 8px;">ADD TO CART</button>
                 </div>
             </div>
         </section>

@@ -3,100 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us Preview - ZenJeevani</title>
+    <title>About Us - evid1labs</title>
     <link rel="stylesheet" href="./assets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --font-body-family: 'Inter', sans-serif;
-            --font-heading-family: 'Inter', sans-serif;
-        }
-        body { background-color: var(--color-bg); }
-        .preview-label {
+        .preview-header {
             background: #1a2b23;
             color: white;
-            padding: 4px 12px;
-            font-size: 10px;
+            padding: 8px;
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            border-radius: 0 0 8px 8px;
         }
+        .page-wrapper { min-height: 100vh; }
+        .is-open { transform: translateY(0) !important; display: flex !important; }
     </style>
 </head>
 <body>
-    <div class="preview-label">About Us Static Preview</div>
+    <div class="preview-header">Local Preview Mode - evid1labs Branding</div>
 
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container">
-            <div class="header-inner">
-                <div class="header-logo">ZenJeevani</div>
-                <nav class="nav-links">
-                    <a href="preview.html" class="nav-link">Home</a>
-                    <a href="#" class="nav-link">Weight Loss</a>
-                    <a href="#" class="nav-link">Mental Health</a>
-                    <a href="#" class="nav-link">Hair Growth</a>
-                    <a href="#" class="nav-link active">About Us</a>
+    <!-- RESPONSIVE 3-ZONE HEADER (Synced with index.html) -->
+    <header class="header">
+        <div class="container header__wrapper">
+            <div class="header__left">
+                <button class="header__icon menu-toggle mobile-only" onclick="toggleMobileMenu()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+                <div class="header__icon search-icon mobile-only">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </div>
+                <a href="index.html" class="header__logo desktop-only" style="text-decoration: none;">
+                    <span style="font-family: 'Outfit'; font-weight: 700; font-size: 28px; color: #1a2b23;">evid1labs</span>
+                </a>
+            </div>
+            <div class="header__center">
+                <a href="index.html" class="header__logo mobile-only" style="text-decoration: none;">
+                    <span style="font-family: 'Outfit'; font-weight: 700; font-size: 24px; color: #1a2b23;">evid1labs</span>
+                </a>
+                <nav class="header__nav desktop-only">
+                    <a href="index.html" class="header__nav-link">Home</a>
+                    <a href="about-preview.html" class="header__nav-link active">About Us</a>
+                </nav>
+            </div>
+            <div class="header__right">
+                <div class="header__icon search-icon desktop-only">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </div>
+                <div class="header__icon account-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="header__icon cart-icon">
+                    <div style="position: relative;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9Z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+                        <span class="cart-count-bubble">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE DRAWER -->
+        <div id="MobileMenuDrawer" class="mobile-menu-drawer">
+            <div class="mobile-menu-drawer__header">
+                <button class="header__icon drawer-close" onclick="toggleMobileMenu()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="mobile-menu-drawer__content">
+                <nav class="mobile-menu-nav">
+                    <a href="index.html" class="mobile-menu-link">Home</a>
+                    <a href="about-preview.html" class="mobile-menu-link">About Us</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <!-- About Content -->
-    <section class="section about-content" style="padding-top: 120px;">
+    <div class="page-wrapper" style="padding-top: 100px;">
         <div class="container">
-            <!-- Mission Statement -->
-            <div class="mission-section text-center" style="margin-bottom: 96px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <h2 class="section-title">Our Mission</h2>
-                <p style="font-size: 20px; color: var(--color-text-muted); line-height: 1.6;">We're on a mission to simplify holistic health through modern science and traditional wisdom.</p>
-            </div>
-
-            <!-- Brand Story -->
-            <div class="grid grid-cols-1 grid-cols-2 gap-xxl items-center" style="margin-bottom: 96px;">
-                <div class="about-image">
-                    <div style="background: #eee; aspect-ratio: 1; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 80px;">🌱</div>
-                </div>
-                <div class="about-text">
-                    <h2 style="font-size: 36px; margin-bottom: 24px;">The ZenJeevani Story</h2>
-                    <div style="line-height: 1.8; color: var(--color-text-muted);">
-                        <p>We believe that health should be accessible, transparent, and personalized. Our journey started with a simple question: why is it so hard to find high-quality, science-backed supplements that actually work?</p>
-                        <p style="margin-top: 16px;">ZenJeevani was born from the intersection of ancient Ayurvedic wisdom and modern clinical validation. Every product we create is a testament to our commitment to purity and efficacy.</p>
+            <!-- AUTHORITY SECTION (Synced from latest requirements) -->
+            <section class="about-authority" style="margin-bottom: 80px;">
+                <div class="about-authority__grid">
+                    <div class="about-authority__content">
+                        <div class="about-authority__brand">evid1labs</div>
+                        <h1 class="about-authority__heading">The Science of Subtle Success</h1>
+                        <p class="about-authority__text">We don't believe in overnight miracles. We believe in the compound effect of high-quality ingredients and sustainable lifestyle choices.</p>
+                        
+                        <!-- Expert Card -->
+                        <div style="background: #fbfbf1; padding: 32px; border-radius: 16px; margin-top: 40px; border: 1px solid #e5e5d1;">
+                            <div style="font-size: 24px; font-weight: 700; color: #1a2b23; margin-bottom: 8px;">Dr. Bimal Chhajer</div>
+                            <div style="color: #7a8d79; font-weight: 600; margin-bottom: 16px;">Leading Medical Consultant</div>
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                <span style="background: #fff; padding: 6px 12px; border-radius: 99px; font-size: 12px; border: 1px solid #eee;">30+ Years Experience</span>
+                                <span style="background: #fff; padding: 6px 12px; border-radius: 99px; font-size: 12px; border: 1px solid #eee;">Lifestyle Medicine Pioneer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-authority__image-wrapper">
+                        <img src="https://jaadudiet.com/cdn/shop/files/dr_bimal_jaadu_diet.png?v=1708418044&width=1000" alt="Dr. Bimal Chhajer" style="width: 100%; border-radius: 20px;">
                     </div>
                 </div>
-            </div>
-
-            <!-- Doctor Info -->
-            <div class="grid grid-cols-1 grid-cols-2 gap-xxl items-center">
-                <div class="about-text">
-                    <h2 style="font-size: 36px; margin-bottom: 24px;">Expert Guidance</h2>
-                    <h3 style="font-size: 24px; color: var(--color-primary); margin-bottom: 16px;">Dr. Sarah Chen</h3>
-                    <div style="line-height: 1.8; color: var(--color-text-muted);">
-                        <p>With over 15 years of experience in nutraceutical research, Dr. Chen leads our clinical formulations focused on mental health and longevity. Her leadership ensures that every batch meets the highest medical standards.</p>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div style="background: #eee; aspect-ratio: 4/5; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; font-size: 80px;">👩‍⚕️</div>
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer class="site-footer" style="margin-top: 96px;">
-        <div class="container">
-            <div class="footer-bottom">
-                &copy; 2026 ZenJeevani. All rights reserved.
+    <!-- FOOTER (Synced with index.html) -->
+    <footer class="footer">
+        <div class="container footer__grid">
+            <div class="footer__column">
+                <h3 class="footer__column-title">Contact Us</h3>
+                <div class="footer__contact-info">
+                    <p>evid1labs</p>
+                    <p>support@evid1labs.com</p>
+                </div>
+            </div>
+            <div class="footer__column">
+                <h3 class="footer__column-title">Policies</h3>
+                <ul class="footer__link-list">
+                    <li><a href="#" class="footer__link">Privacy Policy</a></li>
+                </ul>
             </div>
         </div>
     </footer>
 
-    <script src="./assets/theme.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('MobileMenuDrawer');
+            drawer.classList.toggle('is-open');
+            document.body.classList.toggle('overflow-hidden');
+        }
+    </script>
 </body>
 </html>
