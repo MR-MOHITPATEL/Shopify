@@ -101,6 +101,22 @@
             const bubble = document.querySelector('.cart-count-bubble');
             let count = parseInt(bubble.innerText);
             bubble.innerText = count + 1;
+            
+            // Visual feedback toast
+            const toast = document.createElement('div');
+            toast.innerText = 'Item added to cart!';
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%)';
+            toast.style.background = '#1a2b23';
+            toast.style.color = '#fff';
+            toast.style.padding = '12px 24px';
+            toast.style.borderRadius = '8px';
+            toast.style.zIndex = '10000';
+            toast.style.fontFamily = 'Outfit, sans-serif';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
         }
     </script>
     </header>
@@ -215,7 +231,7 @@
                     <li class="footer__link-item"><a href="#" class="footer__link">Privacy Policy</a></li>
                     <li class="footer__link-item"><a href="#" class="footer__link">Refunds Policy</a></li>
                     <li class="footer__link-item"><a href="#" class="footer__link">Shipping Policy</a></li>
-                    <li class="footer__link-item"><a href="#" class="footer__link">About Us</a></li>
+                    <li class="footer__link-item"><a href="about-preview.html" class="footer__link">About Us</a></li>
                     <li class="footer__link-item"><a href="#" class="footer__link">Terms & Condition</a></li>
                 </ul>
             </div>
@@ -243,7 +259,7 @@
     <div id="StickyBuy" class="sticky-buy" style="transform: translateY(100%); display: none;">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <div style="font-weight: 600;">Daily Salad Mix</div>
-            <button class="btn btn-primary" style="padding: 10px 24px;">BUY NOW</button>
+            <button class="btn btn-primary" onclick="addToCartMockup()" style="padding: 10px 24px;">BUY NOW</button>
         </div>
     </div>
 
