@@ -123,10 +123,15 @@
       fetch('/cart.js')
       .then(res => res.json())
       .then(cart => {
-        const bubble = document.querySelector('.cart-count-bubble');
+        const bubble = document.getElementById('CartCount');
         if (bubble) {
           bubble.innerText = cart.item_count;
-          bubble.style.display = 'flex'; // Ensure visible
+          bubble.setAttribute('data-count', cart.item_count);
+          if (cart.item_count > 0) {
+            bubble.style.display = 'flex';
+          } else {
+            bubble.style.display = 'none';
+          }
         }
       });
 
