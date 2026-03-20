@@ -35,6 +35,13 @@
         "description": "With over 15 years of experience in nutraceutical research, Dr. Chen leads our clinical formulations focused on mental health and longevity."
       }
     },
+    "what-is-daily-salad": {
+      "type": "what-is-daily-salad",
+      "settings": {
+        "title": "What is Daily Salad Mix?",
+        "subtitle": "Daily Salad Mix is a ready-to-mix, fiber supplement powder designed to give you the benefits of a filling, healthy salad in a quick, convenient form."
+      }
+    },
     "faq": {
       "type": "faq",
       "settings": {
@@ -45,6 +52,7 @@
   "order": [
     "hero-banner",
     "featured-products",
+    "what-is-daily-salad",
     "doctor-expert",
     "faq"
   ]
