@@ -67,11 +67,15 @@
 
 <script>
   function buyNowSticky() {
-    // Try to get quantity from the main product form if it exists
-    const mainQtyInput = document.getElementById('Quantity-{{ product.id }}');
-    const qty = mainQtyInput ? mainQtyInput.value : 1;
-    const variantId = '{{ product.selected_or_first_available_variant.id }}';
-    window.location.href = `/cart/${variantId}:${qty}`;
+    const mainForm = document.querySelector('form[action="/cart/add"]');
+    if (mainForm) {
+      // Trigger the main form AJAX
+      mainForm.dispatchEvent(new Event('submit', { cancelable: true }));
+    } else {
+      // Fallback redirect
+      const variantId = '{{ product.selected_or_first_available_variant.id }}';
+      window.location.href = `/cart/${variantId}:1`;
+    }
   }
 </script>
 
