@@ -104,34 +104,6 @@
 <section class="benefits-carousel-section">
   <div class="container">
     <div class="benefits-carousel__header">
-      <h2 class="benefits-carousel__title">{{ section.settings.title }}</h2>
-      <p class="benefits-carousel__subtitle">{{ section.settings.subtitle }}</p>
-    </div>
-
-    <div class="benefits-carousel__container">
-      <!-- Navigation Arrows moved outside slides -->
-      <button class="carousel-nav-btn prev-benefit" style="position: absolute; left: -60px; top: 50%; transform: translateY(-50%); z-index: 10;">←</button>
-      <button class="carousel-nav-btn next-benefit" style="position: absolute; right: -60px; top: 50%; transform: translateY(-50%); z-index: 10;">→</button>
-
-      <div id="BenefitsSlides-{{ section.id }}">
-        {% for block in section.blocks %}
-          <div class="benefits-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
-            <div class="benefits-slide__image">
-              {% if block.settings.image != blank %}
-                <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.title }}">
-              {% else %}
-                {% if forloop.index == 1 %}
-                  <img src="{{ 'salad_mix_woman_benefits.png' | asset_url }}" alt="Quick & Convenient">
-                {% elsif forloop.index == 2 %}
-                  <img src="{{ 'salad_mix_ingredients_fiber.png' | asset_url }}" alt="Natural Fiber Blend">
-                {% else %}
-                  <div style="aspect-ratio: 16/11; background: #eee;"></div>
-                {% endif %}
-              {% endif %}
-            </div>
-            <div class="benefits-slide__content">
-              <h3 class="benefits-slide__heading">{{ block.settings.title }}</h3>
-              <div class="benefits-slide__text">{{ block.settings.text }}</div>
             </div>
           </div>
         {% endfor %}

@@ -29,30 +29,39 @@
     "doctor-expert": {
       "type": "doctor-expert",
       "settings": {
-        "heading": "The Minds Behind Your Health",
-        "image": "shopify://shop_images/Gemini_Generated_Image_mua3g6mua3g6mua3.png",
-        "name": "Dr. Sarah Chen",
-        "description": "With over 15 years of experience in nutraceutical research, Dr. Chen leads our clinical formulations focused on mental health and longevity."
+        "heading": "Why Trust evid1labs?",
+        "image": "assets/dr_paramjeet_singh.png",
+        "name": "Dr. Paramjeet Singh Maras",
+        "description": "Our preventative approach to nutraceuticals is guided by Dr. Paramjeet Singh Maras. Rather than focusing on reversing conditions—which falls outside the scope of daily supplementation—we focus strictly on supporting and maintaining your active lifestyle."
       }
     },
     "what-is-daily-salad": {
       "type": "what-is-daily-salad",
       "settings": {
-        "title": "What is Daily Salad Mix?",
-        "subtitle": "Daily Salad Mix is a ready-to-mix, fiber supplement powder designed to give you the benefits of a filling, healthy salad in a quick, convenient form."
+        "title": "What is the BP Balance Daily Routine?",
+        "subtitle": "To get a full, effective dose of essential minerals like Potassium, a standard capsule simply isn't enough. That’s why we created a hybrid routine."
       }
+    },
+    "trust-badges": {
+      "type": "trust-badges",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "comparison"
     },
     "faq": {
       "type": "faq",
       "settings": {
-        "title": "Frequently Asked Questions"
+        "title": "Formulated for Precaution"
       }
     }
   },
   "order": [
     "hero-banner",
     "featured-products",
+    "trust-badges",
     "what-is-daily-salad",
+    "comparison",
     "doctor-expert",
     "faq"
   ]

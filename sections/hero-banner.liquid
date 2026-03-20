@@ -1,23 +1,15 @@
-<section class="hero-banner">
-  <div class="container hero-banner__wrapper">
-    <div class="hero-banner__content">
-      <p class="hero-banner__subheading">
-        {{ section.settings.subheading }}
-      </p>
+<section class="hero-section" style="padding: 100px 0; background: var(--bg-soft);">
+  <div class="container grid grid-cols-1 grid-cols-2 gap-xl align-center">
+    <div class="hero-content">
+      <h1 style="font-size: 56px; line-height: 1.1; margin-bottom: 24px; color: #1a1a1a;">Precautionary Cardiovascular Support for Your Daily Routine.</h1>
+      <p style="font-size: 18px; line-height: 1.6; color: #666; margin-bottom: 40px;">We are a precautionary nutraceutical company dedicated to your long-term wellness. Our formulations are designed to safely support and maintain your cardiovascular health.</p>
+      <a href="/collections/all" class="btn btn-primary" style="padding: 18px 40px; font-size: 18px;">Shop the Science</a>
     </div>
-
-    <div class="hero-banner__image-container">
+    <div class="hero-image">
       {%- if section.settings.image != blank -%}
-        <img 
-          src="{{ section.settings.image | image_url: width: 1200 }}" 
-          alt="{{ section.settings.subheading | escape }}" 
-          class="hero-banner__image"
-          loading="eager"
-        >
+        <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="Hero" style="width: 100%; border-radius: 32px; box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
       {%- else -%}
-        <div style="background: #ccc; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-lg);">
-          Banner Image Placeholder
-        </div>
+        <img src="{{ 'lifestyle_office_routine.png' | asset_url }}" alt="evid1labs Lifestyle" style="width: 100%; border-radius: 32px; box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
       {%- endif -%}
     </div>
   </div>
