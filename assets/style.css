@@ -1079,23 +1079,123 @@ details[open] summary::after {
   padding-bottom: var(--spacing-md);
 }
 
+
+/* --- JAADU DIET STYLE PRODUCT PAGE --- */
+:root {
+  --color-jaadu-red: #ff3131;
+  --color-jaadu-navy: #1a2b23;
+  --color-jaadu-bg: #fff;
+}
+
+/* Red BUY NOW Button */
+.btn-jaadu-buy {
+  background-color: var(--color-jaadu-red);
+  color: #fff;
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.btn-jaadu-buy:hover {
+  background-color: #e62e2e;
+  transform: translateY(-2px);
+}
+
+.payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.payment-icons img {
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+
+/* Desktop Grid Gallery */
+.product-grid-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-grid-gallery img {
+  width: 100%;
+  border-radius: 12px;
+  background: #f8f9fa;
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .product-grid-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .product-grid-gallery img:first-child {
+    grid-column: span 2;
+  }
+}
+
 /* Sticky Buy Bar */
-.sticky-buy {
+.sticky-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #fff;
-  padding: var(--spacing-sm) var(--spacing-md);
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  background: var(--color-jaadu-red);
+  padding: 12px 20px;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
+  color: #fff;
   transform: translateY(100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease-out;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
 }
 
-.sticky-buy.is-active {
+.sticky-bar.is-active {
   transform: translateY(0);
 }
+
+.sticky-bar__price {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.sticky-bar__btn {
+  background: #fff;
+  color: var(--color-jaadu-red);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Red Badge */
+.badge-save-red {
+  background: var(--color-jaadu-red);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* Hide old sticky bar */
+.sticky-buy { display: none !important; }
