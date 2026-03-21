@@ -154,31 +154,53 @@
 
         <!-- PRODUCT SECTION MOCKUP -->
         <section class="product-page">
-            <div class="container grid grid-cols-2 gap-xl" style="margin-top: 80px;">
+            <div class="container grid product-hero-grid" style="grid-template-columns: 1.2fr 0.8fr; margin-top: 80px;">
+                <!-- Left: Gallery (Grid) -->
                 <div class="product-gallery">
-                    <div class="product-carousel" style="position: relative; overflow: hidden; border-radius: 20px;">
-                        <div class="carousel-track" id="productTrack" style="display: flex; transition: transform 0.3s ease;">
-                            <div class="carousel-slide" style="flex: 0 0 100%;"><img src="assets/salad_mix_woman_benefits.png" alt="Product" style="width: 100%;"></div>
-                            <div class="carousel-slide" style="flex: 0 0 100%;"><img src="assets/salad_mix_ingredients_fiber.png" alt="Product 2" style="width: 100%;"></div>
-                        </div>
-                        <button class="carousel-arrow prev" onclick="moveProductSlide(-1)" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 5;">←</button>
-                        <button class="carousel-arrow next" onclick="moveProductSlide(1)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 5;">→</button>
-                    </div>
-                    <div class="carousel-dots" style="display: flex; justify-content: center; gap: 8px; margin-top: 16px;">
-                        <span class="dot active" onclick="setProductSlide(0)" style="width: 8px; height: 8px; border-radius: 50%; background: #ddd; cursor: pointer;"></span>
-                        <span class="dot" onclick="setProductSlide(1)" style="width: 8px; height: 8px; border-radius: 50%; background: #ddd; cursor: pointer;"></span>
+                    <div class="product-grid-gallery">
+                        <img src="https://jaadudiet.com/cdn/shop/files/Product_Image_Daily_Salad_Mix.png?v=1708418044&width=1200" alt="Product Main">
+                        <img src="assets/salad_mix_woman_benefits.png" alt="Product Benefit 1">
+                        <img src="assets/salad_mix_ingredients_fiber.png" alt="Product Ingredient">
                     </div>
                 </div>
-                <div class="product-meta">
-                    <div style="text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px; color: #999;">Jaadu Diet</div>
-                    <h1 style="font-size: 48px; margin-bottom: 16px;">Daily Salad Mix - Ajwain Jeera</h1>
+
+                <!-- Right: Info -->
+                <div class="product-meta" style="padding-left: 40px; position: sticky; top: 120px; align-self: start;">
+                    <div style="text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; margin-bottom: 8px; color: #999; font-weight: 600;">Jaadu Diet</div>
+                    <h1 style="font-size: 44px; margin-bottom: 16px; font-weight: 700; line-height: 1.1; font-family: 'Outfit';">Daily Salad Mix - Ajwain Jeera</h1>
+                    
                     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <span style="color: #d0021b; font-size: 24px; font-weight: 700;">₹699.00</span>
-                        <span style="text-decoration: line-through; color: #999; font-size: 18px;">₹1,398.00</span>
-                        <span style="background: #eef6fc; color: #3b4260; padding: 4px 12px; border-radius: 99px; font-size: 14px; font-weight: 600;">SAVE 50%</span>
+                        <span style="color: #000; font-size: 32px; font-weight: 700;">₹699.00</span>
+                        <span style="text-decoration: line-through; color: #999; font-size: 20px;">₹1,398.00</span>
+                        <span class="badge-save-red">SAVE 50%</span>
+                    </div>
+
+                    <div style="background: #f1f8e6; padding: 12px 16px; border-radius: 8px; display: inline-block; font-size: 14px; font-weight: 600; color: #1b4332; margin-bottom: 32px; width: 100%;">
+                        ✓ In stock, ships in 24 hours
                     </div>
                     
-                    <div class="accordion">
+                    <div class="product-form-wrapper" style="background: transparent; padding: 0;">
+                        <div style="margin-bottom: 24px;">
+                            <label style="display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.1em;">Quantity</label>
+                            <div class="qty-selector">
+                                <button type="button" class="qty-btn" onclick="updateQty(-1)">−</button>
+                                <input type="number" id="qty" class="qty-input" value="1" min="1">
+                                <button type="button" class="qty-btn" onclick="updateQty(1)">+</button>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-jaadu-buy" onclick="buyNowMockup()">
+                            BUY NOW
+                            <div class="payment-icons">
+                               <span style="font-size: 14px; margin-right: 4px;">via</span>
+                               <span style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">GPay</span>
+                               <span style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">PhonePe</span>
+                               <span style="font-size: 12px;">+</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="accordion" style="margin-top: 40px;">
                         <details class="accordion__item" open>
                             <summary class="accordion__header">Ingredients <span>+</span></summary>
                             <div class="accordion__content" style="padding: 10px 0;"><p>Natural fiber blend with green tea, fenugreek, and apple cider.</p></div>
@@ -188,8 +210,6 @@
                             <div class="accordion__content" style="padding: 10px 0;"><p>Sustainable weight loss and metabolic control.</p></div>
                         </details>
                     </div>
-
-                    <button class="btn btn-primary" onclick="addToCartMockup()" style="width: 100%; height: 56px; margin-top: 32px; border-radius: 8px;">ADD TO CART</button>
                 </div>
             </div>
         </section>
@@ -292,11 +312,11 @@
         </div>
     </footer>
 
-    <!-- STICKY BUY BAR SIMULATION -->
-    <div id="StickyBuy" class="sticky-buy" style="transform: translateY(100%); display: none;">
+    <!-- STICKY BUY BAR MOCKUP -->
+    <div id="StickyBuy" class="sticky-bar" style="transform: translateY(100%);">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <div style="font-weight: 600;">Daily Salad Mix</div>
-            <button class="btn btn-primary" onclick="addToCartMockup()" style="padding: 10px 24px;">BUY NOW</button>
+            <div class="sticky-bar__price">₹699.00</div>
+            <a href="javascript:void(0)" onclick="buyNowMockup()" class="sticky-bar__btn">BUY NOW</a>
         </div>
     </div>
 
@@ -326,15 +346,18 @@
             });
         });
 
-        // Sticky Buy Bar Logic
+        function buyNowMockup() {
+            const qty = document.getElementById('qty').value;
+            alert(`Redirecting to checkout with ${qty} items...`);
+        }
+
+        // Updated Sticky Bar Logic for Mockup
         window.addEventListener('scroll', () => {
             const sticky = document.getElementById('StickyBuy');
-            if (window.scrollY > 400) {
-                sticky.style.display = 'flex';
-                sticky.style.transform = 'translateY(0)';
+            if (window.scrollY > 600) {
+                sticky.classList.add('is-active');
             } else {
-                sticky.style.display = 'none';
-                sticky.style.transform = 'translateY(100%)';
+                sticky.classList.remove('is-active');
             }
         });
     </script>
