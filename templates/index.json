@@ -1,13 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero-banner": {
       "type": "hero-banner",
       "settings": {
-        "heading": "Treatment for a better you.",
-        "subheading": "Modern healthcare for modern life. Personalised prescriptions delivered to your door.",
-        "button_label": "Find My Treatment",
-        "button_link": "",
-        "overlay_text": "WELLNESS"
+        "subheading": "Modern healthcare for modern life. Personalised prescriptions delivered to your door."
       }
     },
     "featured-products": {
@@ -15,15 +20,6 @@
       "settings": {
         "title": "Personalised solutions for you",
         "collection": ""
-      }
-    },
-    "doctor-expert": {
-      "type": "doctor-expert",
-      "settings": {
-        "heading": "The Minds Behind Your Health",
-        "image": "shopify://shop_images/Gemini_Generated_Image_mua3g6mua3g6mua3.png",
-        "name": "Dr. Sarah Chen",
-        "description": "With over 15 years of experience in nutraceutical research, Dr. Chen leads our clinical formulations focused on mental health and longevity."
       }
     },
     "what-is-daily-salad": {
@@ -40,8 +36,61 @@
         "subtitle": "Science-led formulation to ensure you get the maximum value in every sip."
       }
     },
+    "doctor-expert": {
+      "type": "doctor-expert",
+      "settings": {
+        "heading": "The Minds Behind Your Health",
+        "image": "shopify://shop_images/Gemini_Generated_Image_mua3g6mua3g6mua3.png",
+        "name": "Dr. Sarah Chen",
+        "description": "With over 15 years of experience in nutraceutical research, Dr. Chen leads our clinical formulations focused on mental health and longevity."
+      }
+    },
     "faq": {
       "type": "faq",
+      "blocks": {
+        "faq_item_kY8PqN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will this cure my high cholesterol?",
+            "answer": "No. This product is formulated to support and maintain cardiovascular wellness already within a normal range. It is not intended to diagnose, treat, cure, or prevent any disease."
+          }
+        },
+        "faq_item_Qh3zwb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I take Heart Lipid Lite?",
+            "answer": "The recommended daily format is 2 softgels and 2 capsules. Take them with water as part of your daily routine."
+          }
+        },
+        "faq_item_annznA": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Who is this supplement designed for?",
+            "answer": "It is targeted toward adults aged 35–55 with a family history who want to proactively maintain healthy lipid levels."
+          }
+        },
+        "faq_item_CbRXzQ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does one package last, and what is the cost?",
+            "answer": "How long does one package last, and what is the cost?"
+          }
+        },
+        "faq_item_ETzeGm": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the key active ingredients?",
+            "answer": "The formula features pure Omega-3 (Salmon Fish Oil), CoQ10, Aged Garlic Extract, and Vitamin D3."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_kY8PqN",
+        "faq_item_Qh3zwb",
+        "faq_item_annznA",
+        "faq_item_CbRXzQ",
+        "faq_item_ETzeGm"
+      ],
       "settings": {
         "title": "Frequently Asked Questions"
       }
