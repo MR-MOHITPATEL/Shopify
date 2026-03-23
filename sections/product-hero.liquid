@@ -151,12 +151,68 @@
   }
 
   @media (max-width: 768px) {
+    .product-hero {
+      padding: 24px 0;
+    }
     .product-hero-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
+      grid-template-columns: 1fr !important;
+      gap: 24px;
     }
     .product-gallery {
       position: static;
+    }
+    .product-info-column {
+      padding-left: 0 !important;
+      position: static !important;
+    }
+    .product-info-column h1 {
+      font-size: 26px !important;
+      margin-bottom: 10px;
+    }
+    .product-price {
+      font-size: 22px !important;
+    }
+    nav.breadcrumb {
+      font-size: 11px;
+      margin-bottom: 16px;
+    }
+    .qty-btn {
+      width: 40px;
+      height: 40px;
+    }
+    .qty-input {
+      width: 44px;
+      height: 40px;
+      font-size: 15px;
+    }
+    .atc-btn,
+    .buy-now-btn,
+    .btn-jaadu-buy {
+      padding: 15px !important;
+      font-size: 15px !important;
+    }
+    .product-description {
+      font-size: 14px !important;
+      margin-top: 28px !important;
+    }
+    .badge-save-red {
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-hero {
+      padding: 16px 0;
+    }
+    .product-info-column h1 {
+      font-size: 22px !important;
+    }
+    .product-price {
+      font-size: 20px !important;
+    }
+    .thumbnail-item {
+      width: 64px;
+      height: 64px;
     }
   }
 </style>
