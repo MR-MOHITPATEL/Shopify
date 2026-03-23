@@ -364,16 +364,18 @@
         
         <h1 style="font-size: 44px; margin-bottom: 16px; font-weight: 700; line-height: 1.1; font-family: 'Outfit';">{{ product.title }}</h1>
         
-        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-          <span class="product-price" style="font-size: 32px; font-weight: 700; color: #000;">{{ product.price | money }}</span>
+        <div style="margin-bottom: 24px;">
+          <span class="product-price" style="display: block; font-size: 32px; font-weight: 700; color: #000; margin-bottom: 8px;">{{ product.price | money }}</span>
           {% if product.compare_at_price > product.price %}
-            <span style="text-decoration: line-through; color: #999; font-size: 20px;">{{ product.compare_at_price | money }}</span>
-            <span class="badge-save-red">SAVE {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}%</span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="text-decoration: line-through; color: #999; font-size: 18px;">{{ product.compare_at_price | money }}</span>
+              <span class="badge-save-red">SAVE {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}%</span>
+            </div>
           {% endif %}
         </div>
         
-        <div style="background: #f1f8e6; padding: 12px 16px; border-radius: 8px; display: inline-block; font-size: 14px; font-weight: 600; color: #1b4332; margin-bottom: 32px; width: 100%;">
-          ✓ In stock, ships in 24 hours
+        <div class="product-description" style="line-height: 1.7; color: #4a554a; margin-bottom: 24px; font-size: 16px;">
+          {{ product.description }}
         </div>
 
         <div class="product-form-container" style="background: transparent; padding: 0;">
@@ -388,17 +390,7 @@
           
           <button type="button" class="btn-jaadu-buy" onclick="buyNow()">
             BUY NOW
-            <div class="payment-icons">
-               <span style="font-size: 14px; margin-right: 4px;">via</span>
-               <span style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">GPay</span>
-               <span style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">PhonePe</span>
-               <span style="font-size: 12px;">+</span>
-            </div>
           </button>
-        </div>
-
-        <div class="product-description" style="line-height: 1.7; color: #4a554a; margin-top: 40px; font-size: 16px;">
-          {{ product.description }}
         </div>
       </div>
 
