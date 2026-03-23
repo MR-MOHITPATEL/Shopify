@@ -150,6 +150,111 @@
     background: #2d6a4f;
   }
 
+  /* ── Carousel ── */
+  .product-carousel {
+    position: relative;
+    background: #f8f9fa;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    aspect-ratio: 1;
+    user-select: none;
+  }
+  .product-carousel__track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease;
+  }
+  .product-carousel__slide {
+    min-width: 100%;
+    height: 100%;
+  }
+  .product-carousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    mix-blend-mode: multiply;
+  }
+  .product-carousel__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.88);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #1b4332;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    z-index: 2;
+    transition: background 0.2s;
+    line-height: 1;
+  }
+  .product-carousel__btn:hover { background: #fff; }
+  .product-carousel__btn--prev { left: 12px; }
+  .product-carousel__btn--next { right: 12px; }
+
+  .product-carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .product-carousel__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .product-carousel__dot.is-active {
+    background: #1b4332;
+    transform: scale(1.35);
+  }
+
+  .product-carousel__thumbs {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: #ddd transparent;
+  }
+  .product-carousel__thumbs::-webkit-scrollbar { height: 4px; }
+  .product-carousel__thumbs::-webkit-scrollbar-thumb { background: #ddd; border-radius: 4px; }
+
+  .product-carousel__thumb {
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    background: #f8f9fa;
+  }
+  .product-carousel__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    mix-blend-mode: multiply;
+  }
+  .product-carousel__thumb.is-active {
+    border-color: #1b4332;
+  }
+
+  /* ── Mobile ── */
   @media (max-width: 768px) {
     .product-hero {
       padding: 24px 0;
@@ -176,18 +281,9 @@
       font-size: 11px;
       margin-bottom: 16px;
     }
-    .qty-btn {
-      width: 40px;
-      height: 40px;
-    }
-    .qty-input {
-      width: 44px;
-      height: 40px;
-      font-size: 15px;
-    }
-    .atc-btn,
-    .buy-now-btn,
-    .btn-jaadu-buy {
+    .qty-btn { width: 40px; height: 40px; }
+    .qty-input { width: 44px; height: 40px; font-size: 15px; }
+    .atc-btn, .buy-now-btn, .btn-jaadu-buy {
       padding: 15px !important;
       font-size: 15px !important;
     }
@@ -195,43 +291,69 @@
       font-size: 14px !important;
       margin-top: 28px !important;
     }
-    .badge-save-red {
-      font-size: 11px;
-    }
+    .badge-save-red { font-size: 11px; }
+    .product-carousel__thumb { width: 60px; height: 60px; }
+    .product-carousel__btn { width: 34px; height: 34px; font-size: 18px; }
   }
 
   @media (max-width: 480px) {
-    .product-hero {
-      padding: 16px 0;
-    }
-    .product-info-column h1 {
-      font-size: 22px !important;
-    }
-    .product-price {
-      font-size: 20px !important;
-    }
-    .thumbnail-item {
-      width: 64px;
-      height: 64px;
-    }
+    .product-hero { padding: 16px 0; }
+    .product-info-column h1 { font-size: 22px !important; }
+    .product-price { font-size: 20px !important; }
+    .product-carousel__btn { width: 30px; height: 30px; font-size: 16px; }
+    .product-carousel__thumb { width: 52px; height: 52px; }
   }
 </style>
 
 <section class="product-hero">
   <div class="container">
     <div class="product-hero-grid" style="grid-template-columns: 1.2fr 0.8fr;">
-      <!-- Image Gallery (Grid for Desktop) -->
+
+      <!-- Image Carousel -->
       <div class="product-gallery">
-        <div class="product-grid-gallery">
-          {% for media in product.media %}
-            <img src="{{ media | image_url: width: 1200 }}" alt="{{ product.title }} - {{ forloop.index }}">
-          {% endfor %}
-          {% if product.media.size == 0 %}
-            <div style="aspect-ratio: 1; background: #f8f9fa; display: flex; align-items: center; justify-content: center; font-size: 80px; border-radius: 20px;">
-              💊
+        {% if product.media.size > 0 %}
+
+          <div class="product-carousel" id="ProductCarousel-{{ product.id }}">
+            <div class="product-carousel__track" id="CarouselTrack-{{ product.id }}">
+              {% for media in product.media %}
+                <div class="product-carousel__slide">
+                  <img src="{{ media | image_url: width: 1200 }}" alt="{{ product.title }} - {{ forloop.index }}">
+                </div>
+              {% endfor %}
+            </div>
+            {% if product.media.size > 1 %}
+              <button class="product-carousel__btn product-carousel__btn--prev"
+                      onclick="carouselMove('{{ product.id }}', -1)"
+                      aria-label="Previous image">&#8249;</button>
+              <button class="product-carousel__btn product-carousel__btn--next"
+                      onclick="carouselMove('{{ product.id }}', 1)"
+                      aria-label="Next image">&#8250;</button>
+            {% endif %}
+          </div>
+
+          {% if product.media.size > 1 %}
+            <div class="product-carousel__dots" id="CarouselDots-{{ product.id }}">
+              {% for media in product.media %}
+                <button class="product-carousel__dot {% if forloop.first %}is-active{% endif %}"
+                        onclick="carouselGoTo('{{ product.id }}', {{ forloop.index0 }})"
+                        aria-label="Go to image {{ forloop.index }}"></button>
+              {% endfor %}
+            </div>
+            <div class="product-carousel__thumbs" id="CarouselThumbs-{{ product.id }}">
+              {% for media in product.media %}
+                <div class="product-carousel__thumb {% if forloop.first %}is-active{% endif %}"
+                     onclick="carouselGoTo('{{ product.id }}', {{ forloop.index0 }})">
+                  <img src="{{ media | image_url: width: 200 }}" alt="{{ product.title }} - {{ forloop.index }}">
+                </div>
+              {% endfor %}
             </div>
           {% endif %}
-        </div>
+
+        {% else %}
+          <div style="aspect-ratio: 1; background: #f8f9fa; display: flex; align-items: center; justify-content: center; font-size: 80px; border-radius: 20px;">
+            💊
+          </div>
+        {% endif %}
       </div>
 
       <!-- Info -->
@@ -268,7 +390,6 @@
             BUY NOW
             <div class="payment-icons">
                <span style="font-size: 14px; margin-right: 4px;">via</span>
-               <!-- Simplified icons or labels for mockup -->
                <span style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">GPay</span>
                <span style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px;">PhonePe</span>
                <span style="font-size: 12px;">+</span>
@@ -280,6 +401,7 @@
           {{ product.description }}
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -291,6 +413,61 @@
 </div>
 
 <script>
+  // ── Carousel Logic ──
+  var _carouselIndex = {};
+
+  function _carouselGetTotal(id) {
+    var track = document.getElementById('CarouselTrack-' + id);
+    return track ? track.children.length : 0;
+  }
+
+  function carouselMove(id, dir) {
+    if (!_carouselIndex[id]) _carouselIndex[id] = 0;
+    var total = _carouselGetTotal(id);
+    if (!total) return;
+    _carouselIndex[id] = (_carouselIndex[id] + dir + total) % total;
+    _carouselRender(id);
+  }
+
+  function carouselGoTo(id, idx) {
+    _carouselIndex[id] = idx;
+    _carouselRender(id);
+  }
+
+  function _carouselRender(id) {
+    var idx = _carouselIndex[id] || 0;
+
+    // Move track
+    var track = document.getElementById('CarouselTrack-' + id);
+    if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+
+    // Dots
+    var dots = document.querySelectorAll('#CarouselDots-' + id + ' .product-carousel__dot');
+    dots.forEach(function(d, i) { d.classList.toggle('is-active', i === idx); });
+
+    // Thumbs
+    var thumbs = document.querySelectorAll('#CarouselThumbs-' + id + ' .product-carousel__thumb');
+    thumbs.forEach(function(t, i) {
+      t.classList.toggle('is-active', i === idx);
+      if (i === idx) t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
+  }
+
+  // Touch / swipe support
+  (function() {
+    var el = document.getElementById('ProductCarousel-{{ product.id }}');
+    if (!el) return;
+    var startX = 0;
+    el.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    el.addEventListener('touchend', function(e) {
+      var diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) carouselMove('{{ product.id }}', diff > 0 ? 1 : -1);
+    }, { passive: true });
+  })();
+
+  // ── Qty & Buy ──
   function updateQty(amount) {
     const input = document.getElementById('Quantity-{{ product.id }}');
     let value = parseInt(input.value) || 1;
@@ -322,4 +499,3 @@
   "settings": []
 }
 {% endschema %}
-
