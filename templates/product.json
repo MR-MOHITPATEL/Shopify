@@ -11,8 +11,19 @@
   "sections": {
     "hero": {
       "type": "product-hero",
+      "disabled": true,
       "custom_css": [],
       "settings": {}
+    },
+    "product_tabs_HdVYJN": {
+      "type": "product-tabs",
+      "name": "Heart Lipid Lite Section",
+      "settings": {
+        "product_title": "Heart Lipid Lite",
+        "product_subtitle": "For Complete Cardiometabolic Health & Triglyceride Support",
+        "product_price": "₹850",
+        "original_price": "₹999"
+      }
     },
     "1773297530685dbdf3": {
       "type": "_blocks",
@@ -75,6 +86,7 @@
     },
     "suitable": {
       "type": "product-suitable",
+      "disabled": true,
       "settings": {}
     },
     "faq_yF3qdV": {
@@ -106,6 +118,7 @@
     },
     "faq": {
       "type": "product-faq",
+      "disabled": true,
       "settings": {}
     },
     "cart-drawer": {
@@ -119,6 +132,7 @@
   },
   "order": [
     "hero",
+    "product_tabs_HdVYJN",
     "1773297530685dbdf3",
     "offers",
     "ingredients",
