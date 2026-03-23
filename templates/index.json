@@ -18,22 +18,8 @@
     "featured-products": {
       "type": "featured-products",
       "settings": {
-        "title": "Personalised solutions for you",
+        "title": "",
         "collection": ""
-      }
-    },
-    "what-is-daily-salad": {
-      "type": "what-is-daily-salad",
-      "settings": {
-        "title": "What is Daily Salad Mix?",
-        "subtitle": "Daily Salad Mix is a ready-to-mix, fiber supplement powder designed to give you the benefits of a filling, healthy salad in a quick, convenient form."
-      }
-    },
-    "benefits-grid": {
-      "type": "benefits-grid",
-      "settings": {
-        "title": "How Arjuna Cardio Care Tea Supports Your Heart",
-        "subtitle": "Science-led formulation to ensure you get the maximum value in every sip."
       }
     },
     "doctor-expert": {
@@ -99,8 +85,6 @@
   "order": [
     "hero-banner",
     "featured-products",
-    "what-is-daily-salad",
-    "benefits-grid",
     "doctor-expert",
     "faq"
   ]
