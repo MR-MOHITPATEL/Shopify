@@ -11,12 +11,12 @@
   "sections": {
     "hero": {
       "type": "product-hero",
-      "disabled": true,
       "custom_css": [],
       "settings": {}
     },
     "product_tabs_HdVYJN": {
       "type": "product-tabs",
+      "disabled": true,
       "name": "Heart Lipid Lite Section",
       "settings": {
         "product_title": "Heart Lipid Lite",
