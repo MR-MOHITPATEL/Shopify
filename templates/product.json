@@ -111,7 +111,58 @@
         "faq_item_49AaPk",
         "faq_item_wXTKmW"
       ],
+      "disabled": true,
       "name": "FAQ",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    },
+    "faq_LbggVC": {
+      "type": "faq",
+      "blocks": {
+        "faq_item_7gaX6q": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I take Heart Lipid Lite?",
+            "answer": "The recommended daily format is 2 softgels and 2 capsules. Take them with water as part of your daily routine."
+          }
+        },
+        "faq_item_PqqANA": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Who is this supplement designed for?",
+            "answer": "It is targeted toward adults aged 35–55 with a family history who want to proactively maintain healthy lipid levels."
+          }
+        },
+        "faq_item_F4a67c": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does one package last, and what is the cost?",
+            "answer": "A single pack provides a 60-day supply and is priced at ₹850."
+          }
+        },
+        "faq_item_LJpgcJ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the key active ingredients?",
+            "answer": "The formula features pure Omega-3 (Salmon Fish Oil), CoQ10, Aged Garlic Extract, and Vitamin D3."
+          }
+        },
+        "faq_item_TyyLY4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will this cure my high cholesterol?",
+            "answer": "No. This product is formulated to support and maintain cardiovascular wellness already within a normal range. It is not intended to diagnose, treat, cure, or prevent any disease."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_7gaX6q",
+        "faq_item_PqqANA",
+        "faq_item_F4a67c",
+        "faq_item_LJpgcJ",
+        "faq_item_TyyLY4"
+      ],
       "settings": {
         "title": "Frequently Asked Questions"
       }
@@ -139,6 +190,7 @@
     "ingredients_9Lw9r8",
     "suitable",
     "faq_yF3qdV",
+    "faq_LbggVC",
     "faq",
     "cart-drawer",
     "sticky-bar"
