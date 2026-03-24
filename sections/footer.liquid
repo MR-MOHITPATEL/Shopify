@@ -14,11 +14,11 @@
     <div class="footer__column">
       <h4 class="footer__column-title">Policies</h4>
       <ul class="footer__link-list" style="list-style: none; padding: 0;">
-        <li class="footer__link-item"><a href="/pages/privacy-policy" class="footer__link">Privacy Policy</a></li>
-        <li class="footer__link-item"><a href="/pages/refund-policy" class="footer__link">Refunds Policy</a></li>
-        <li class="footer__link-item"><a href="/pages/shipping-policy" class="footer__link">Shipping Policy</a></li>
-        <li class="footer__link-item"><a href="/pages/about-us" class="footer__link">About Us</a></li>
-        <li class="footer__link-item"><a href="/pages/terms-conditions" class="footer__link">Terms & Condition</a></li>
+        <li class="footer__link-item"><a href="{{ section.settings.privacy_policy_url | default: '/pages/privacy-policy' }}" class="footer__link">Privacy Policy</a></li>
+        <li class="footer__link-item"><a href="{{ section.settings.refund_policy_url | default: '/pages/refund-policy' }}" class="footer__link">Refunds Policy</a></li>
+        <li class="footer__link-item"><a href="{{ section.settings.shipping_policy_url | default: '/pages/shipping-policy' }}" class="footer__link">Shipping Policy</a></li>
+        <li class="footer__link-item"><a href="{{ section.settings.about_url | default: '/pages/about-us' }}" class="footer__link">About Us</a></li>
+        <li class="footer__link-item"><a href="{{ section.settings.terms_url | default: '/pages/terms-conditions' }}" class="footer__link">Terms & Condition</a></li>
       </ul>
     </div>
 
@@ -43,3 +43,16 @@
     </div>
   </div>
 </footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "url", "id": "privacy_policy_url", "label": "Privacy Policy URL" },
+    { "type": "url", "id": "refund_policy_url", "label": "Refunds Policy URL" },
+    { "type": "url", "id": "shipping_policy_url", "label": "Shipping Policy URL" },
+    { "type": "url", "id": "about_url", "label": "About Us URL" },
+    { "type": "url", "id": "terms_url", "label": "Terms & Conditions URL" }
+  ]
+}
+{% endschema %}
